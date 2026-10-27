@@ -1,0 +1,23 @@
+# Dependencias
+node_modules/
+
+# Compilación
+dist/
+dist-ssr/
+
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Registros
+logs/
+*.log
+npm-debug.log*
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.local

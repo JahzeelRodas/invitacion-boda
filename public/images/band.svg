@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Grupo musical">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2EADC"/>
+      <stop offset="1" stop-color="#DCC9AC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="44" y="44" width="1112" height="712" fill="none" stroke="#B49A67" stroke-opacity="0.5" stroke-width="1.4"/><rect x="51" y="51" width="1098" height="698" fill="none" stroke="#B49A67" stroke-opacity="0.28" stroke-width="0.7"/>
+  <g transform="translate(600,358.4)" stroke="#B49A67" fill="none">  <line x1="-109.71428571428571" y1="0" x2="-22.857142857142854" y2="0" stroke-opacity="0.55"/>  <rect x="-6.285714285714286" y="-6.285714285714286" width="12.571428571428571" height="12.571428571428571" transform="rotate(45)" stroke-opacity="0.85"/>  <line x1="22.857142857142854" y1="0" x2="109.71428571428571" y2="0" stroke-opacity="0.55"/></g>
+  <text x="600" y="444.2" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" letter-spacing="7" fill="#292723" fill-opacity="0.82" style="text-transform:uppercase">GRUPO MUSICAL</text>
+  <text x="600" y="480.59999999999997" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#77716A" fill-opacity="0.6">Reemplázame: /public/images/band.svg</text>
+</svg>

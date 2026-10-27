@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+    overflow-x: clip;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: rgba(180, 154, 103, 0.28);
+  }
+
+  :focus-visible {
+    outline: 1px solid #b49a67;
+    outline-offset: 3px;
+  }
+
+  img {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+@layer components {
+  /* Botón editorial con filete dorado */
+  .btn-hairline {
+    @apply inline-flex items-center justify-center gap-2 border border-gold/60 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-ink transition-colors duration-300 hover:bg-gold/10;
+  }
+
+  .btn-hairline--light {
+    @apply inline-flex items-center justify-center gap-2 border border-champagne/70 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-silk transition-colors duration-300 hover:bg-champagne/15;
+  }
+
+  /* Campos de formulario estilo papelería */
+  .field-input {
+    @apply w-full border-b border-gold/40 bg-transparent py-2.5 text-[15px] text-ink placeholder:text-warm/50 focus:border-gold focus:outline-none;
+  }
+
+  .field-label {
+    @apply block text-[10px] font-medium uppercase tracking-[0.3em] text-warm;
+  }
+
+  /* Zoom sutil de galería solo en dispositivos con puntero */
+  .img-zoom {
+    will-change: transform;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .img-zoom {
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .gallery-item:hover .img-zoom,
+    .gallery-item:focus-visible .img-zoom {
+      transform: scale(1.045);
+    }
+  }
+}

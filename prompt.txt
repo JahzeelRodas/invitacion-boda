@@ -1,0 +1,532 @@
+# PROMPT MAESTRO — INVITACIÓN DIGITAL DE MATRIMONIO PREMIUM
+
+Actúa como un equipo multidisciplinario formado por:
+
+- Un director creativo especializado en bodas de lujo.
+- Un diseñador gráfico experto en invitaciones editoriales y papelería nupcial.
+- Un diseñador UX/UI especializado en experiencias web inmersivas.
+- Un desarrollador frontend senior especializado en React, animaciones y rendimiento.
+- Un especialista en optimización web, accesibilidad y despliegues mediante Git en Hostinger.
+
+Tu misión es diseñar y desarrollar una **invitación digital de matrimonio elegante, romántica, cinematográfica y completamente responsive**, con calidad visual de una agencia profesional de diseño de bodas.
+
+No quiero una plantilla genérica ni una landing page comercial. Quiero una experiencia digital que transmita la emoción de una boda y sorprenda a los invitados desde el primer instante.
+
+## 1. Objetivo del proyecto
+
+Construir una invitación web de una sola página, con desplazamiento vertical narrativo, animaciones elegantes, fotografías de los novios, música ambiental, información del evento, código de vestimenta y un video del grupo musical contratado para la celebración.
+
+La invitación debe compartirse mediante un único enlace, funcionar en teléfonos móviles, tablets y computadoras, y permitir que los novios actualicen sus datos sin tener que reconstruir toda la experiencia.
+
+La implementación debe quedar preparada para desplegarse desde un repositorio Git en Hostinger.
+
+## 2. Stack tecnológico
+
+Utiliza las siguientes tecnologías:
+
+- React con TypeScript.
+- Vite como herramienta de construcción.
+- Tailwind CSS para estilos, si su integración es compatible con las versiones elegidas.
+- Framer Motion para animaciones de entrada, transiciones y elementos interactivos.
+- GSAP y ScrollTrigger únicamente si aportan un efecto narrativo que justifique su uso; evita duplicar bibliotecas innecesariamente.
+- Lucide React para iconos discretos.
+- HTML5 Audio para la música de fondo.
+- HTML5 Video o un reproductor de YouTube/Vimeo para el video musical.
+- CSS moderno para tipografía, efectos visuales, composición y diseño responsive.
+
+Antes de instalar dependencias, verifica las versiones compatibles y estables disponibles en el entorno.
+
+El resultado principal debe ser un sitio estático que se compile a archivos HTML, CSS, JavaScript y recursos optimizados.
+
+No implementes un backend, una base de datos ni servicios de pago innecesarios para esta primera versión.
+
+## 3. Dirección artística
+
+Concepto: **Luxury Editorial Wedding — Romantic Cinematic Experience**.
+
+La invitación debe parecer una combinación de revista editorial de lujo, película romántica y papelería nupcial artesanal.
+
+Paleta sugerida:
+
+- Marfil cálido: #F8F5EF.
+- Blanco seda: #FFFCF7.
+- Beige champagne: #D8C3A5.
+- Dorado suave: #B49A67.
+- Gris cálido: #77716A.
+- Negro tinta: #292723.
+
+Utiliza el dorado con moderación. Evita los degradados llamativos, los efectos de cristal excesivos, los botones voluminosos, las sombras pesadas y los adornos que parezcan de una plantilla prefabricada.
+
+Tipografía:
+
+- Una serif elegante, como Cormorant Garamond o Playfair Display, para nombres, titulares y frases románticas.
+- Una sans serif limpia, como Inter o Manrope, para fechas, direcciones y datos prácticos.
+- Una tipografía caligráfica únicamente para pequeños acentos, si mejora la composición.
+
+Puedes utilizar fuentes de Google Fonts o alternativas locales, siempre con una estrategia de carga optimizada.
+
+Integra flores delicadas, líneas finas, marcos editoriales, texturas sutiles de papel y detalles ornamentales discretos. No conviertas la página en un catálogo de flores ni en una tarjeta recargada.
+
+El diseño debe ser sofisticado, emocional, equilibrado y coherente en todas sus secciones.
+
+## 4. Experiencia inicial: apertura de la invitación
+
+Diseña una pantalla inicial de alto impacto.
+
+Elementos:
+
+- Fondo marfil con textura muy sutil o una fotografía romántica desenfocada.
+- Sobre digital centrado, con bordes delicados y un sello de lacre con las iniciales de los novios.
+- Fecha o pequeña frase de bienvenida.
+- Animación suave del sello y del sobre.
+- Indicador visual que invite a tocar para abrir.
+
+Texto de ejemplo:
+
+«Tenemos una historia que celebrar».
+
+Botón principal:
+
+«Abrir invitación».
+
+Al pulsar el botón:
+
+1. Ejecutar una animación elegante en la que el sello se desvanece o se abre.
+2. Animar las solapas del sobre.
+3. Revelar progresivamente la invitación.
+4. Iniciar la reproducción de la canción seleccionada por los novios.
+5. Mostrar la portada principal con una transición cinematográfica.
+
+La apertura debe ser fluida, breve y elegante. No obligues al usuario a esperar una animación larga.
+
+La experiencia debe seguir funcionando si el dispositivo tiene las animaciones reducidas, si falla la reproducción de audio o si el navegador no admite alguna transición.
+
+## 5. Portada principal — Hero cinematográfico
+
+Después de abrir el sobre, mostrar una fotografía destacada de los novios.
+
+Composición:
+
+- Fotografía de alta calidad con tratamiento editorial.
+- Nombres de los novios en tipografía serif de gran elegancia.
+- Texto: «¡Nos casamos!».
+- Fecha del matrimonio.
+- Frase romántica breve.
+- Indicador animado para descubrir el contenido al desplazarse.
+
+Incorpora una animación de aparición de los nombres y un efecto de zoom muy lento en la fotografía, evitando movimientos agresivos.
+
+El texto debe conservar suficiente contraste y legibilidad.
+
+## 6. Música ambiental durante la visita
+
+La música debe acompañar la experiencia completa de la invitación.
+
+Requisitos:
+
+- Reproducir una canción configurable después del primer toque del usuario.
+- Mantener la reproducción al desplazarse entre las secciones, sin reiniciar la canción.
+- Crear un reproductor flotante pequeño y elegante.
+- Incluir icono de reproducción/pausa, estado visual y control de silencio.
+- Mostrar una animación discreta cuando la música esté sonando.
+- Recordar el estado de reproducción mientras el usuario permanece en la página.
+- No iniciar varias instancias de audio.
+- Gestionar errores de carga y promesas de reproducción.
+- Respetar el volumen y la preferencia del usuario.
+- Detener o liberar correctamente el audio cuando corresponda.
+
+Utiliza un archivo MP3 optimizado, configurable desde el proyecto.
+
+No utilices canciones comerciales sin autorización. Deja preparado el sistema para que los novios incorporen una canción propia o con licencia.
+
+Si el audio no está disponible, la invitación debe funcionar con normalidad y mostrar un mensaje discreto, sin errores visibles.
+
+## 7. Nuestra historia
+
+Crear una sección romántica para presentar brevemente la historia de la pareja.
+
+Debe incluir:
+
+- Un titular editorial.
+- Un texto configurable.
+- Dos o tres momentos importantes de la relación.
+- Fotografías integradas con elegancia.
+- Animaciones suaves al entrar en pantalla.
+
+Ejemplo de titular:
+
+«Dos caminos, una misma historia».
+
+No inventes fechas, anécdotas ni información personal. Utiliza textos de ejemplo claramente identificados como contenido editable.
+
+## 8. Galería fotográfica
+
+Crear una galería de entre seis y diez fotografías configurables.
+
+Diseño:
+
+- Composición editorial tipo revista.
+- Fotografías verticales, horizontales y algunos formatos cuadrados.
+- Distribución asimétrica cuidadosamente equilibrada.
+- Bordes limpios y espacios amplios.
+- Animación de aparición progresiva al hacer scroll.
+- Efecto de zoom sutil al pasar el cursor por encima, solo en dispositivos compatibles.
+- Modal o lightbox al pulsar una fotografía.
+- Navegación entre imágenes y cierre accesible.
+- Texto alternativo descriptivo para cada imagen.
+
+No utilices una cuadrícula genérica de tarjetas idénticas. La galería debe tener ritmo visual y destacar las fotografías principales.
+
+Optimiza las imágenes con WebP o AVIF cuando sea posible, utiliza dimensiones adecuadas y carga diferida para las fotografías que estén fuera de la pantalla.
+
+Deja las imágenes organizadas en una carpeta específica para sustituirlas fácilmente por las fotografías reales de los novios.
+
+## 9. Cuenta regresiva
+
+Crear un contador elegante para el día del matrimonio.
+
+Mostrar:
+
+- Días.
+- Horas.
+- Minutos.
+- Segundos.
+
+La fecha y hora deben ser configurables.
+
+El contador debe actualizarse correctamente, gestionar fechas pasadas y utilizar la zona horaria local del evento cuando esté definida.
+
+No inventes la fecha del matrimonio.
+
+## 10. Información del evento
+
+Crear una sección clara y sofisticada con los datos del matrimonio.
+
+Incluir campos configurables para:
+
+- Fecha.
+- Hora de la ceremonia.
+- Lugar de la ceremonia.
+- Dirección.
+- Lugar de la recepción.
+- Hora de la recepción.
+- Dirección de la recepción.
+- Información adicional para los invitados.
+
+Diseña cada evento con un icono discreto, jerarquía tipográfica y composición editorial.
+
+Incluir botones funcionales:
+
+- «Ver ubicación».
+- «Cómo llegar».
+- «Agregar al calendario».
+
+Los enlaces de ubicación deben abrir Google Maps con la dirección configurada. El botón del calendario debe generar o descargar un archivo ICS válido con los datos del evento.
+
+Si ceremonia y recepción tienen ubicaciones diferentes, mostrar ambas por separado.
+
+## 11. Código de vestimenta
+
+Crear una sección visual destacada para comunicar el dress code.
+
+Debe incluir:
+
+- Título: «Código de vestimenta».
+- Tipo de vestimenta configurable, por ejemplo, formal, elegante o etiqueta.
+- Descripción breve y amable.
+- Paleta visual de colores sugeridos, si corresponde.
+- Ilustraciones o fotografías editoriales de inspiración.
+
+Ejemplo de texto:
+
+«Elegancia para una noche inolvidable».
+
+La información debe ser editable. No impongas colores prohibidos ni reglas de vestimenta que los novios no hayan indicado.
+
+Mantén un diseño refinado, con suficiente espacio y sin ilustraciones infantiles.
+
+## 12. Video del grupo musical
+
+Crear una sección especial para presentar al grupo musical que actuará durante la celebración.
+
+Titular sugerido:
+
+«La música de nuestra celebración».
+
+Incluir:
+
+- Nombre configurable del grupo.
+- Fotografía promocional o imagen de portada.
+- Video de presentación.
+- Breve descripción opcional.
+- Texto de invitación a descubrir su música.
+
+El reproductor debe admitir:
+
+1. Un video de YouTube mediante URL o identificador configurable.
+2. Alternativamente, un archivo MP4 optimizado alojado junto al sitio.
+
+Para YouTube, utiliza una miniatura y carga el reproductor cuando el usuario pulse reproducir, si es posible.
+
+No reproduzcas el video automáticamente ni mezcles su audio con la canción ambiental. Al iniciar el video, pausa la música de fondo y gestiona correctamente el estado del reproductor.
+
+Si no se ha configurado el video, muestra una sección de reemplazo elegante que indique dónde agregarlo, sin presentar contenido ficticio como si fuera real.
+
+## 13. Confirmación de asistencia — RSVP
+
+Diseña una sección para que los invitados confirmen su asistencia.
+
+Campos sugeridos:
+
+- Nombre completo.
+- Confirmación de asistencia.
+- Número de acompañantes, si está permitido.
+- Mensaje opcional para los novios.
+
+Mostrar un mensaje de agradecimiento después de una confirmación exitosa.
+
+Importante: no simules el envío ni muestres éxito si la respuesta no se ha guardado.
+
+En esta primera versión, puedes integrar un enlace configurable a un formulario externo o una solución de formularios compatible con el despliegue estático.
+
+Si se implementa un formulario propio, deja definida una variable de entorno para su endpoint y valida los campos antes de enviar. Si no existe un endpoint configurado, muestra una alternativa funcional, como confirmar por WhatsApp mediante un enlace preconfigurado.
+
+No incluyas credenciales, claves privadas ni secretos en el frontend.
+
+## 14. Cierre emocional
+
+Finalizar con una sección visual que transmita emoción y gratitud.
+
+Incluir:
+
+- Fotografía final de los novios.
+- Sus nombres.
+- Fecha del matrimonio.
+- Frase de despedida.
+
+Ejemplo:
+
+«El comienzo de nuestra historia para siempre».
+
+Añade un pequeño detalle ornamental y una transición visual suave. No utilices confeti, efectos estridentes ni animaciones excesivas.
+
+## 15. Animaciones y comportamiento al hacer scroll
+
+La página debe sentirse viva, pero nunca lenta ni recargada.
+
+Implementar:
+
+- Aparición progresiva de titulares.
+- Desplazamientos verticales discretos.
+- Efectos parallax moderados en fotografías.
+- Revelación de imágenes con máscaras suaves.
+- Transiciones de opacidad.
+- Animaciones de líneas y detalles ornamentales.
+- Movimiento sutil de fondos.
+- Indicadores de progreso o navegación cuando aporten valor.
+- Transiciones fluidas entre secciones.
+
+Las animaciones deben ejecutarse cuando los elementos entren en el área visible.
+
+Utiliza Intersection Observer o las capacidades equivalentes de la biblioteca seleccionada para evitar trabajo innecesario.
+
+Respeta `prefers-reduced-motion` y ofrece una experiencia accesible para personas sensibles al movimiento.
+
+Evita animar continuamente elementos que no aporten valor. Prioriza `transform` y `opacity` para conservar un buen rendimiento.
+
+## 16. Diseño responsive y experiencia móvil
+
+La invitación se compartirá principalmente mediante WhatsApp, por lo que debes diseñar primero para móviles.
+
+Requisitos:
+
+- Diseño mobile-first.
+- Compatibilidad con pantallas pequeñas y grandes.
+- Sin desplazamiento horizontal.
+- Botones y áreas táctiles cómodas.
+- Textos legibles sin zoom.
+- Galería adaptativa.
+- Reproductor de música que no tape información importante.
+- Navegación intuitiva.
+- Correcto funcionamiento en Chrome, Safari y navegadores móviles actuales.
+- Buen comportamiento en orientación vertical y horizontal.
+- Apertura rápida incluso con conexiones móviles moderadas.
+
+En escritorio, aprovecha el espacio adicional con composiciones editoriales, fotografías de mayor formato y una mejor jerarquía visual.
+
+## 17. Arquitectura y organización del proyecto
+
+Organiza el código para que sea fácil de mantener.
+
+Una estructura orientativa:
+
+src/
+  assets/
+    images/
+    audio/
+    video/
+  components/
+    invitation/
+    layout/
+    gallery/
+    audio/
+    animation/
+    event/
+    rsvp/
+  sections/
+    InvitationOpening.tsx
+    HeroSection.tsx
+    OurStorySection.tsx
+    GallerySection.tsx
+    CountdownSection.tsx
+    EventDetailsSection.tsx
+    DressCodeSection.tsx
+    MusicBandSection.tsx
+    RSVPSection.tsx
+    ClosingSection.tsx
+  config/
+    wedding.ts
+  hooks/
+  styles/
+  utils/
+  App.tsx
+  main.tsx
+
+La estructura puede ajustarse si existe una arquitectura mejor, pero evita crear componentes gigantes o concentrar toda la lógica en un solo archivo.
+
+Centraliza los datos editables en `src/config/wedding.ts`, incluyendo:
+
+- Nombres.
+- Iniciales.
+- Fecha y hora.
+- Zona horaria.
+- Frases.
+- Fotografías.
+- Canción.
+- Tipo de vestimenta.
+- Ubicaciones.
+- Grupo musical.
+- URL del video.
+- Información de RSVP.
+- Enlaces externos.
+
+Documenta cómo cambiar esos valores sin necesidad de modificar la lógica de los componentes.
+
+## 18. Optimización de recursos
+
+Implementa:
+
+- Imágenes WebP/AVIF cuando sea posible.
+- Lazy loading de imágenes no críticas.
+- Dimensiones explícitas para evitar saltos de contenido.
+- Precarga selectiva de la imagen principal.
+- Carga diferida del reproductor de video.
+- Audio optimizado y no precargado innecesariamente.
+- División de código cuando aporte beneficios.
+- Eliminación de dependencias innecesarias.
+- Metadatos SEO.
+- Open Graph para que el enlace compartido en WhatsApp tenga una imagen de portada, título y descripción.
+- Favicon personalizado con las iniciales de los novios.
+- Página de error o alternativa visual para recursos no disponibles.
+
+Evita utilizar grandes videos de fondo, bibliotecas excesivas o recursos remotos que bloqueen la carga de la invitación.
+
+## 19. Despliegue en Hostinger mediante Git
+
+El proyecto debe ser compatible con un despliegue estático en Hostinger.
+
+Requisitos:
+
+- Repositorio Git organizado.
+- Archivo `package.json` con scripts claros.
+- Comando `npm run build`.
+- Salida de producción en `dist/`.
+- Instrucciones para conectar el repositorio en Hostinger.
+- Configuración de la rama de producción.
+- Configuración de la carpeta de salida y del comando de construcción según la modalidad de despliegue disponible.
+- Configuración de variables de entorno de compilación cuando sean necesarias.
+- Archivo `.gitignore`.
+- Archivo `README.md` con instrucciones completas.
+
+No supongas que todos los planes de Hostinger ofrecen el mismo mecanismo de despliegue. Verifica si el servicio utilizado permite despliegue Git directo o si requiere una compilación local y la publicación de los archivos generados.
+
+Si se utiliza una aplicación SPA con rutas, configura las reglas de reescritura necesarias para que no aparezcan errores 404 al recargar una URL. Si toda la invitación funciona en una sola ruta, evita complejidad innecesaria.
+
+No incluyas `node_modules`, secretos, archivos temporales ni credenciales en el repositorio.
+
+## 20. SEO y presentación al compartir
+
+Configura:
+
+- Título de la página con los nombres de los novios.
+- Meta descripción.
+- Imagen Open Graph.
+- Metadatos para WhatsApp y redes sociales.
+- URL canónica configurable.
+- Favicon.
+- Idioma del documento en español.
+
+La vista previa compartida debe ser elegante, con una fotografía representativa, nombres legibles y una descripción breve.
+
+No publiques datos privados de los invitados ni incluyas información personal sensible en metadatos.
+
+## 21. Calidad y pruebas
+
+Antes de terminar:
+
+- Ejecuta la compilación de producción.
+- Corrige todos los errores de TypeScript.
+- Verifica que no existan errores de consola.
+- Comprueba los enlaces.
+- Prueba la apertura del sobre.
+- Comprueba el inicio y la pausa de la música.
+- Comprueba que el video pause la música ambiental.
+- Prueba el contador.
+- Verifica el funcionamiento de la galería.
+- Comprueba la descarga del calendario.
+- Verifica el formulario de RSVP y sus alternativas.
+- Comprueba el diseño en móvil y escritorio.
+- Revisa accesibilidad, contraste y navegación por teclado.
+- Verifica que las animaciones respeten la preferencia de movimiento reducido.
+- Comprueba que el sitio se pueda publicar como archivos estáticos.
+
+No marques como terminado ningún componente que solamente tenga apariencia visual sin comportamiento funcional.
+
+## 22. Criterio visual final
+
+El resultado debe transmitir:
+
+- Elegancia.
+- Romance.
+- Exclusividad.
+- Delicadeza.
+- Calidad editorial.
+- Una experiencia cinematográfica.
+- Una identidad visual consistente.
+
+Cada sección debe tener una composición diferente, pero todas deben pertenecer a la misma identidad de boda.
+
+Evita el aspecto de dashboard, los diseños SaaS, las tarjetas repetitivas, los emojis decorativos excesivos y los efectos de animación propios de una demostración tecnológica.
+
+La invitación debe parecer diseñada específicamente para una pareja real.
+
+## 23. Forma de trabajo
+
+Primero, inspecciona el repositorio actual y comprueba si ya existe un proyecto. No sobrescribas archivos útiles sin revisarlos.
+
+Después:
+
+1. Define la dirección visual y la estructura.
+2. Implementa la experiencia de apertura.
+3. Desarrolla las secciones de la invitación.
+4. Implementa la música y el video.
+5. Integra animaciones y comportamiento responsive.
+6. Optimiza los recursos.
+7. Ejecuta pruebas y compilación.
+8. Documenta la configuración y el despliegue en Hostinger.
+
+Si faltan los datos reales del matrimonio, utiliza contenido de demostración claramente identificado y centralizado en la configuración. No inventes nombres, fechas, ubicaciones ni canciones como si fueran datos reales.
+
+**Entrega esperada:** un proyecto funcional, visualmente pulido, organizado, optimizado, listo para personalizar y preparado para desplegarse mediante Git en Hostinger.
+
+Prioriza siempre la calidad visual y la experiencia real de los invitados por encima de agregar efectos innecesarios.
