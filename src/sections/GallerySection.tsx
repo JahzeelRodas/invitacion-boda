@@ -23,7 +23,7 @@ export default function GallerySection() {
                 type="button"
                 onClick={() => setLightboxIndex(index)}
                 aria-label={`Ampliar fotografía: ${image.alt}`}
-                className="gallery-item group block w-full cursor-pointer overflow-hidden border border-gold/15 bg-champagne/10"
+                className="gallery-item group block w-full cursor-pointer overflow-hidden border border-electric/15 bg-azure/10"
               >
                 <img
                   src={image.src}

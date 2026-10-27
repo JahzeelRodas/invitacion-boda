@@ -6,14 +6,14 @@ export default {
       colors: {
         ivory: '#F8F5EF',
         silk: '#FFFCF7',
-        champagne: '#D8C3A5',
-        gold: {
-          DEFAULT: '#B49A67',
-          light: '#C9B183',
-          dark: '#9A8152',
+        azure: '#C9D8F2',
+        electric: {
+          DEFAULT: '#1F51FF',
+          light: '#6E93FF',
+          deep: '#123FB8',
         },
-        warm: '#77716A',
-        ink: '#292723',
+        mute: '#6F7580',
+        ink: '#191C24',
       },
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],

@@ -13,28 +13,28 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const outDir = join(root, 'public', 'images')
 mkdirSync(outDir, { recursive: true })
 
-const GOLD = '#B49A67'
-const INK = '#292723'
-const WARM = '#77716A'
+const ELECTRIC = '#1F51FF'
+const INK = '#191C24'
+const MUTE = '#6F7580'
 
-// Duotonos suaves tomados de la paleta de la invitación.
+// Duotonos suaves con tinte azul de la paleta de la invitación.
 const TONES = [
-  ['#F2EADC', '#DCC9AC'],
-  ['#F6F2E9', '#E5D9C4'],
-  ['#EAE2D3', '#CFBD9F'],
-  ['#F0E4D2', '#CBB089'],
+  ['#E9EEF8', '#C9D8F2'],
+  ['#F0F3F9', '#D5DEF0'],
+  ['#E4EAF5', '#C0CDE9'],
+  ['#EBF0FA', '#B9C7EC'],
 ]
 
 function frame(w, h, inset) {
   return [
-    `<rect x="${inset}" y="${inset}" width="${w - inset * 2}" height="${h - inset * 2}" fill="none" stroke="${GOLD}" stroke-opacity="0.5" stroke-width="1.4"/>`,
-    `<rect x="${inset + 7}" y="${inset + 7}" width="${w - (inset + 7) * 2}" height="${h - (inset + 7) * 2}" fill="none" stroke="${GOLD}" stroke-opacity="0.28" stroke-width="0.7"/>`,
+    `<rect x="${inset}" y="${inset}" width="${w - inset * 2}" height="${h - inset * 2}" fill="none" stroke="${ELECTRIC}" stroke-opacity="0.5" stroke-width="1.4"/>`,
+    `<rect x="${inset + 7}" y="${inset + 7}" width="${w - (inset + 7) * 2}" height="${h - (inset + 7) * 2}" fill="none" stroke="${ELECTRIC}" stroke-opacity="0.28" stroke-width="0.7"/>`,
   ].join('')
 }
 
 function ornament(cx, cy, scale = 1) {
   return [
-    `<g transform="translate(${cx},${cy})" stroke="${GOLD}" fill="none">`,
+    `<g transform="translate(${cx},${cy})" stroke="${ELECTRIC}" fill="none">`,
     `  <line x1="${-96 * scale}" y1="0" x2="${-20 * scale}" y2="0" stroke-opacity="0.55"/>`,
     `  <rect x="${-5.5 * scale}" y="${-5.5 * scale}" width="${11 * scale}" height="${11 * scale}" transform="rotate(45)" stroke-opacity="0.85"/>`,
     `  <line x1="${20 * scale}" y1="0" x2="${96 * scale}" y2="0" stroke-opacity="0.55"/>`,
@@ -67,7 +67,7 @@ function svg({ w, h, label, sub, toneIndex, angle = 0 }) {
   ${frame(w, h, Math.round(Math.min(w, h) * 0.055))}
   ${ornament(cx, cy - fs * 1.6, Math.min(1.2, Math.max(0.7, Math.min(w, h) / 700)))}
   <text x="${cx}" y="${cy + fs * 1.7}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="${fs}" letter-spacing="${Math.round(fs * 0.28)}" fill="${INK}" fill-opacity="0.82" style="text-transform:uppercase">${label.toUpperCase()}</text>
-  <text x="${cx}" y="${cy + fs * 1.7 + subFs * 2.6}" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="${subFs}" fill="${WARM}" fill-opacity="0.6">${sub}</text>
+  <text x="${cx}" y="${cy + fs * 1.7 + subFs * 2.6}" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="${subFs}" fill="${MUTE}" fill-opacity="0.6">${sub}</text>
 </svg>
 `
 }

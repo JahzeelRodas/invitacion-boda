@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-label="Inspiración · 02">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#EAE2D3"/>
-      <stop offset="1" stop-color="#CFBD9F"/>
+      <stop offset="0" stop-color="#E4EAF5"/>
+      <stop offset="1" stop-color="#C0CDE9"/>
     </linearGradient>
   </defs>
   <rect width="700" height="900" fill="url(#bg)"/>
-  <rect x="39" y="39" width="622" height="822" fill="none" stroke="#B49A67" stroke-opacity="0.5" stroke-width="1.4"/><rect x="46" y="46" width="608" height="808" fill="none" stroke="#B49A67" stroke-opacity="0.28" stroke-width="0.7"/>
-  <g transform="translate(350,408.4)" stroke="#B49A67" fill="none">  <line x1="-96" y1="0" x2="-20" y2="0" stroke-opacity="0.55"/>  <rect x="-5.5" y="-5.5" width="11" height="11" transform="rotate(45)" stroke-opacity="0.85"/>  <line x1="20" y1="0" x2="96" y2="0" stroke-opacity="0.55"/></g>
-  <text x="350" y="494.2" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" letter-spacing="7" fill="#292723" fill-opacity="0.82" style="text-transform:uppercase">INSPIRACIÓN · 02</text>
-  <text x="350" y="530.6" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#77716A" fill-opacity="0.6">Reemplázame: /public/images/dress-2.svg</text>
+  <rect x="39" y="39" width="622" height="822" fill="none" stroke="#1F51FF" stroke-opacity="0.5" stroke-width="1.4"/><rect x="46" y="46" width="608" height="808" fill="none" stroke="#1F51FF" stroke-opacity="0.28" stroke-width="0.7"/>
+  <g transform="translate(350,408.4)" stroke="#1F51FF" fill="none">  <line x1="-96" y1="0" x2="-20" y2="0" stroke-opacity="0.55"/>  <rect x="-5.5" y="-5.5" width="11" height="11" transform="rotate(45)" stroke-opacity="0.85"/>  <line x1="20" y1="0" x2="96" y2="0" stroke-opacity="0.55"/></g>
+  <text x="350" y="494.2" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" letter-spacing="7" fill="#191C24" fill-opacity="0.82" style="text-transform:uppercase">INSPIRACIÓN · 02</text>
+  <text x="350" y="530.6" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#6F7580" fill-opacity="0.6">Reemplázame: /public/images/dress-2.svg</text>
 </svg>

@@ -55,13 +55,13 @@ export const wedding = {
   /* ── PAREJA ──────────────────────────────────────────────────────────── */
   couple: {
     /** DEMO: reemplazar por los nombres reales. */
-    brideName: 'Valentina',
-    brideFullName: 'Valentina Ignacia Ríos Mendoza',
-    groomName: 'Sebastián',
-    groomFullName: 'Sebastián Andrés Fuentes Alcántara',
+    brideName: 'Alejandro',
+    brideFullName: 'Alejandro Fuentes Alcántara',
+    groomName: 'Margot',
+    groomFullName: 'Margot Ríos Mendoza',
     /** Iniciales para el sello, favicon y detalles ornamentales. */
-    initials: 'V·S',
-    monogram: 'V & S',
+    initials: 'A·M',
+    monogram: 'A & M',
     /** Si los novios tienen un hashtag, añádelo aquí (opcional). */
     hashtag: '',
   },
@@ -72,14 +72,14 @@ export const wedding = {
      * DEMO: fecha y hora local del evento, sin indicador de zona.
      * Formato: "YYYY-MM-DDTHH:mm:ss" (24 horas).
      */
-    isoDateTime: '2026-12-05T17:30:00',
+    isoDateTime: '2026-11-21T11:30:00',
     /** Zona horaria IANA del lugar del evento (p. ej. "America/Santiago"). */
-    timeZone: 'America/Santiago',
+    timeZone: 'America/La Paz',
     /** Etiquetas de visualización. */
-    displayLong: 'Sábado 5 de diciembre de 2026',
-    displayShort: '05 · 12 · 2026',
+    displayLong: 'Sábado 21 de Noviembre de 2026',
+    displayShort: '21 · 11 · 2026',
     /** Ciudad o lugar resumido, para la portada. */
-    place: 'Santiago, Chile',
+    place: 'La Paz, Bolivia',
   },
 
   /* ── FRASES ──────────────────────────────────────────────────────────── */
@@ -95,8 +95,8 @@ export const wedding = {
   /* ── PORTADA ─────────────────────────────────────────────────────────── */
   hero: {
     /** Reemplaza /public/images/hero-couple.svg por la fotografía real. */
-    image: '/images/hero-couple.svg',
-    alt: 'Fotografía principal de los novios, Valentina y Sebastián',
+    image: '/images/4.jpg',
+    alt: 'Fotografía principal de los novios, Alejandro y Margot',
   },
 
   /* ── NUESTRA HISTORIA ────────────────────────────────────────────────── */
@@ -109,21 +109,21 @@ export const wedding = {
         label: 'El primer encuentro',
         title: 'Un día cualquiera que lo cambió todo',
         text: 'Texto de ejemplo: el relato breve del primer encuentro. Sustituye este párrafo por la anécdota real de los novios.',
-        image: '/images/story-1.svg',
+        image: '/images/11.jpg',
         alt: 'Fotografía del primer momento de la historia de la pareja',
       },
       {
         label: 'Los años juntos',
         title: 'Viajes, risas y una vida en común',
         text: 'Texto de ejemplo: un párrafo sobre lo que han construido juntos. Sustituye por el texto real.',
-        image: '/images/story-2.svg',
+        image: '/images/15.jpg',
         alt: 'Fotografía del segundo momento de la historia de la pareja',
       },
       {
         label: 'La propuesta',
         title: 'La pregunta que nos trae hasta aquí',
         text: 'Texto de ejemplo: el momento de la propuesta. Sustituye por el texto real.',
-        image: '/images/story-3.svg',
+        image: '/images/9.jpg',
         alt: 'Fotografía del momento de la propuesta',
       },
     ] satisfies StoryMoment[],
@@ -151,21 +151,21 @@ export const wedding = {
     title: 'Ceremonia y celebración',
     ceremony: {
       label: 'Ceremonia',
-      isoDateTime: '2026-12-05T17:30:00',
-      timeLabel: '17:30 h',
+      isoDateTime: '2026-11-21T11:30:00',
+      timeLabel: '11:30 h',
       durationMinutes: 60,
-      venueName: 'Parroquia Santa María de los Andes',
-      address: 'Av. Providencia 1234, Providencia, Santiago',
-      mapsQuery: 'Parroquia Santa María de los Andes, Providencia, Santiago de Chile',
+      venueName: 'Catedral Metropolitana Nuestra Señora de La Paz',
+      address: 'Plaza Murillo Km 0, La Paz',
+      mapsQuery: 'Catedral Metropolitana Nuestra Señora de La Paz, La Paz',
     },
     reception: {
       label: 'Recepción',
-      isoDateTime: '2026-12-05T20:00:00',
-      timeLabel: '20:00 h',
+      isoDateTime: '2026-11-21T16:00:00',
+      timeLabel: '16:00 h',
       durationMinutes: 240,
-      venueName: 'Hacienda Los Aromos',
-      address: 'Camino Las Flores 567, Las Condes, Santiago',
-      mapsQuery: 'Hacienda Los Aromos, Las Condes, Santiago de Chile',
+      venueName: 'Golden Prime II',
+      address: 'Av. Bolivia entre calles 4 y 5, N°20 Zona Santiago II, El Alto',
+      mapsQuery: 'Av. Bolivia entre calles 4 y 5, N°20 Zona Santiago II, El Alto',
     },
     /** Notas prácticas para los invitados (editables). */
     notes: [
@@ -181,13 +181,13 @@ export const wedding = {
     type: 'Formal elegante',
     headline: 'Elegancia para una noche inolvidable',
     description:
-      'Texto de ejemplo: te invitamos a vestir formal. Los tonos champagne, marfil y dorado acompañan la paleta de la celebración.',
+      'Texto de ejemplo: te invitamos a vestir formal. Los tonos azul eléctrico, marfil y azulado acompañan la paleta de la celebración.',
     /** Paleta de colores sugerida para los invitados (opcional). */
     palette: [
-      { name: 'Champagne', hex: '#D8C3A5' },
-      { name: 'Dorado', hex: '#B49A67' },
-      { name: 'Gris cálido', hex: '#77716A' },
-      { name: 'Tinta', hex: '#292723' },
+      { name: 'Azul eléctrico', hex: '#1F51FF' },
+      { name: 'Azul pálido', hex: '#C9D8F2' },
+      { name: 'Gris azulado', hex: '#6F7580' },
+      { name: 'Tinta', hex: '#191C24' },
     ],
     /** Nota opcional sobre tonos a evitar (vacío para omitir). */
     avoidNote: 'Te pedimos evitar tonos blanco y marfil, reservados para la novia.',
@@ -205,9 +205,9 @@ export const wedding = {
      * canción propia o con licencia (p. ej. /public/audio/nuestra-cancion.mp3)
      * y actualiza `src`, `title` y `artist`.
      */
-    src: '/audio/ambience-demo.wav',
-    title: 'Pieza de demostración',
-    artist: 'Sustituir en src/config/wedding.ts → music',
+    src: '/audio/Ricky Martin - Disparo al Corazón.mp3',
+    title: 'Disparo al Corazon',
+    artist: 'Ricky Martin → music',
     /** Volumen entre 0 y 1. */
     volume: 0.45,
   },
@@ -227,7 +227,7 @@ export const wedding = {
      * Deja ambos vacíos para mostrar el espacio de reserva.
      */
     youtubeVideoId: '',
-    mp4Src: '',
+    mp4Src: '/images/grupo.mp4',
   },
 
   /* ── CONFIRMACIÓN DE ASISTENCIA (RSVP) ───────────────────────────────── */

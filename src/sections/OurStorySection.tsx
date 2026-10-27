@@ -16,7 +16,7 @@ export default function OurStorySection() {
       <SectionHeader eyebrow="Nuestra historia" title={story.title} />
 
       <Reveal>
-        <p className="mx-auto mt-9 max-w-2xl text-center font-serif text-lg leading-relaxed text-warm md:text-[1.2rem]">
+        <p className="mx-auto mt-9 max-w-2xl text-center font-serif text-lg leading-relaxed text-mute md:text-[1.2rem]">
           {story.intro}
         </p>
       </Reveal>
@@ -35,13 +35,13 @@ export default function OurStorySection() {
 
             <div className={index % 2 === 1 ? 'md:order-1' : undefined}>
               <Reveal>
-                <p className="font-script text-[1.7rem] leading-none text-gold">{moment.label}</p>
+                <p className="font-script text-[1.7rem] leading-none text-electric">{moment.label}</p>
               </Reveal>
               <Reveal delay={0.06}>
                 <h3 className="mt-3 font-serif text-2xl font-medium text-ink md:text-[1.75rem]">{moment.title}</h3>
               </Reveal>
               <Reveal delay={0.12}>
-                <p className="mt-4 text-sm leading-[1.9] text-warm md:text-[15px]">{moment.text}</p>
+                <p className="mt-4 text-sm leading-[1.9] text-mute md:text-[15px]">{moment.text}</p>
               </Reveal>
             </div>
           </div>

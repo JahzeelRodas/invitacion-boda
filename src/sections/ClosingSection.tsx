@@ -31,14 +31,14 @@ export default function ClosingSection() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <p id="cierre-title" className="mt-9 font-script text-4xl leading-snug text-champagne sm:text-5xl">
+          <p id="cierre-title" className="mt-9 font-script text-4xl leading-snug text-azure sm:text-5xl">
             {wedding.phrases.closing}
           </p>
         </Reveal>
 
         <Reveal delay={0.16}>
           <h2 className="mt-9 font-serif text-[clamp(2.4rem,8vw,4.2rem)] font-medium leading-tight text-silk">
-            {wedding.couple.brideName} <span className="font-script text-[0.7em] text-champagne">&amp;</span>{' '}
+            {wedding.couple.brideName} <span className="font-script text-[0.7em] text-azure">&amp;</span>{' '}
             {wedding.couple.groomName}
           </h2>
         </Reveal>
@@ -52,7 +52,7 @@ export default function ClosingSection() {
         </Reveal>
 
         <Reveal delay={0.36}>
-          <span aria-hidden="true" className="mt-10 block h-1.5 w-1.5 rotate-45 border border-champagne/80" />
+          <span aria-hidden="true" className="mt-10 block h-1.5 w-1.5 rotate-45 border border-azure/80" />
         </Reveal>
       </div>
     </section>

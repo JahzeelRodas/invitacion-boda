@@ -36,14 +36,14 @@ export default function MusicPlayer({ visible }: MusicPlayerProps) {
       transition={{ duration: 0.7, delay: 1.6, ease: [0.22, 1, 0.36, 1] }}
       className="fixed bottom-5 right-4 z-40 sm:bottom-6 sm:right-6"
     >
-      <div className="flex h-11 items-center gap-0.5 rounded-full border border-gold/40 bg-silk/90 pl-1.5 pr-1.5 shadow-[0_2px_18px_rgba(41,39,35,0.10)] backdrop-blur-sm">
+      <div className="flex h-11 items-center gap-0.5 rounded-full border border-electric/40 bg-silk/90 pl-1.5 pr-1.5 shadow-[0_2px_18px_rgba(41,39,35,0.10)] backdrop-blur-sm">
         <button
           type="button"
           onClick={toggle}
           disabled={broken}
           aria-label={STATUS_TITLES[status]}
           title={STATUS_TITLES[status]}
-          className="flex h-8 w-8 items-center justify-center rounded-full text-ink transition-colors hover:bg-gold/10 disabled:cursor-not-allowed disabled:text-warm/60"
+          className="flex h-8 w-8 items-center justify-center rounded-full text-ink transition-colors hover:bg-electric/10 disabled:cursor-not-allowed disabled:text-mute/60"
         >
           {isPlaying ? (
             <Pause size={15} strokeWidth={1.5} aria-hidden="true" />
@@ -58,11 +58,11 @@ export default function MusicPlayer({ visible }: MusicPlayerProps) {
                 <span
                   key={eq}
                   style={{ animationDelay: `${i * 0.18}s` }}
-                  className={`${eq} ${EQ_HEIGHTS[i]} w-[2px] origin-bottom rounded-full bg-gold`}
+                  className={`${eq} ${EQ_HEIGHTS[i]} w-[2px] origin-bottom rounded-full bg-electric`}
                 />
               ))
             : (
-                <span className="h-px w-3.5 bg-gold/40" />
+                <span className="h-px w-3.5 bg-electric/40" />
               )}
         </div>
 
@@ -72,7 +72,7 @@ export default function MusicPlayer({ visible }: MusicPlayerProps) {
           aria-label={muted ? 'Activar sonido' : 'Silenciar música'}
           aria-pressed={muted}
           title={muted ? 'Activar sonido' : 'Silenciar música'}
-          className="flex h-8 w-8 items-center justify-center rounded-full text-warm transition-colors hover:bg-gold/10"
+          className="flex h-8 w-8 items-center justify-center rounded-full text-mute transition-colors hover:bg-electric/10"
         >
           {muted ? <VolumeX size={15} strokeWidth={1.5} aria-hidden="true" /> : <Volume2 size={15} strokeWidth={1.5} aria-hidden="true" />}
         </button>

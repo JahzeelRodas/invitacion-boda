@@ -19,19 +19,19 @@ function VenueBlock({ icon: Icon, label, timeLabel, venueName, address, mapsQuer
   return (
     <Reveal delay={delay}>
       <article className="flex flex-col items-center text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/45 text-gold" aria-hidden="true">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-electric/45 text-electric" aria-hidden="true">
           <Icon size={19} strokeWidth={1.4} />
         </span>
 
-        <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.35em] text-warm">{label}</p>
+        <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.35em] text-mute">{label}</p>
         <h3 className="mt-3 font-serif text-2xl font-medium text-ink md:text-[1.7rem]">{venueName}</h3>
 
         <p className="mt-4 flex items-center gap-2 text-sm text-ink/80">
-          <Clock size={13} strokeWidth={1.5} className="text-gold" aria-hidden="true" />
+          <Clock size={13} strokeWidth={1.5} className="text-electric" aria-hidden="true" />
           {timeLabel}
         </p>
-        <p className="mt-1.5 flex items-center gap-2 text-sm text-warm">
-          <MapPin size={13} strokeWidth={1.5} className="text-gold" aria-hidden="true" />
+        <p className="mt-1.5 flex items-center gap-2 text-sm text-mute">
+          <MapPin size={13} strokeWidth={1.5} className="text-electric" aria-hidden="true" />
           {address}
         </p>
 
@@ -87,7 +87,7 @@ export default function EventDetailsSection() {
 
         <div className="relative mt-16 grid gap-16 md:mt-20 md:grid-cols-2 md:gap-0">
           {/* Filete vertical divisoria en escritorio */}
-          <span aria-hidden="true" className="absolute left-1/2 top-2 hidden h-[calc(100%-1rem)] w-px bg-gold/25 md:block" />
+          <span aria-hidden="true" className="absolute left-1/2 top-2 hidden h-[calc(100%-1rem)] w-px bg-electric/25 md:block" />
 
           <VenueBlock
             icon={Church}
@@ -120,14 +120,14 @@ export default function EventDetailsSection() {
 
         {event.notes.length > 0 && (
           <Reveal delay={0.2}>
-            <aside className="mx-auto mt-14 max-w-2xl border-t border-gold/25 pt-8 text-center">
-              <p className="flex items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-gold">
+            <aside className="mx-auto mt-14 max-w-2xl border-t border-electric/25 pt-8 text-center">
+              <p className="flex items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em] text-electric">
                 <Info size={12} strokeWidth={1.5} aria-hidden="true" />
                 Información para invitados
               </p>
               <ul className="mt-5 space-y-2.5">
                 {event.notes.map((note) => (
-                  <li key={note} className="text-sm leading-relaxed text-warm">
+                  <li key={note} className="text-sm leading-relaxed text-mute">
                     {note}
                   </li>
                 ))}

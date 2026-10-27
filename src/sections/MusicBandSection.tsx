@@ -32,19 +32,19 @@ export default function MusicBandSection() {
         <SectionHeader eyebrow="La celebración" title="La música de nuestra celebración" />
 
         <Reveal delay={0.1}>
-          <p className="mx-auto mt-8 max-w-xl font-script text-[1.8rem] leading-snug text-gold">{band.name}</p>
+          <p className="mx-auto mt-8 max-w-xl font-script text-[1.8rem] leading-snug text-electric">{band.name}</p>
         </Reveal>
 
         {band.description && (
           <Reveal delay={0.15}>
-            <p className="mx-auto mt-5 max-w-xl text-sm leading-[1.9] text-warm md:text-[15px]">{band.description}</p>
+            <p className="mx-auto mt-5 max-w-xl text-sm leading-[1.9] text-mute md:text-[15px]">{band.description}</p>
           </Reveal>
         )}
 
         {/* ── Video ─────────────────────────────────────────────────────── */}
         <Reveal delay={0.2} className="mt-12">
           {hasVideo ? (
-            <figure className="mx-auto max-w-3xl overflow-hidden border border-gold/25 bg-ink shadow-[0_14px_50px_rgba(41,39,35,0.14)]">
+            <figure className="mx-auto max-w-3xl overflow-hidden border border-electric/25 bg-ink shadow-[0_14px_50px_rgba(41,39,35,0.14)]">
               <div className="relative aspect-video w-full">
                 {videoActive ? (
                   hasYouTube ? (
@@ -114,24 +114,24 @@ export default function MusicBandSection() {
                   </button>
                 )}
               </div>
-              <figcaption className="flex items-center justify-center gap-2 bg-silk px-4 py-3 text-[9px] font-medium uppercase tracking-[0.3em] text-warm">
+              <figcaption className="flex items-center justify-center gap-2 bg-silk px-4 py-3 text-[9px] font-medium uppercase tracking-[0.3em] text-mute">
                 <Volume2 size={12} strokeWidth={1.5} aria-hidden="true" />
                 {videoActive ? 'La música ambiental se detuvo' : 'Pulsa para descubrir su música'}
               </figcaption>
             </figure>
           ) : (
             /* Espacio de reserva cuando aún no se configura el video */
-            <div className="mx-auto max-w-3xl border border-gold/25 bg-champagne/10 px-8 py-14 text-center">
-              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 text-gold" aria-hidden="true">
+            <div className="mx-auto max-w-3xl border border-electric/25 bg-azure/10 px-8 py-14 text-center">
+              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-electric/40 text-electric" aria-hidden="true">
                 <Music size={19} strokeWidth={1.4} />
               </span>
               <p className="mt-5 font-serif text-xl italic text-ink/85">Espacio reservado para el video del grupo</p>
-              <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-warm">
+              <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-mute">
                 Para activar esta sección, agrega el identificador de YouTube del grupo en
                 <span className="font-medium text-ink/80"> src/config/wedding.ts → band.youtubeVideoId</span>
                 , o un archivo MP4 en <span className="font-medium text-ink/80">/public/video</span> → band.mp4Src.
               </p>
-              <p className="mt-6 flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.3em] text-warm">
+              <p className="mt-6 flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.3em] text-mute">
                 <Pause size={11} strokeWidth={1.5} aria-hidden="true" />
                 Al reproducirlo, la música ambiental se pausará automáticamente
               </p>

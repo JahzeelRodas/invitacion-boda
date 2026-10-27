@@ -56,16 +56,16 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
       aria-hidden={opening}
     >
       {/* Florones de esquina */}
-      <span aria-hidden="true" className="absolute left-5 top-5 h-10 w-10 border-l border-t border-gold/40" />
-      <span aria-hidden="true" className="absolute right-5 top-5 h-10 w-10 border-r border-t border-gold/40" />
-      <span aria-hidden="true" className="absolute bottom-5 left-5 h-10 w-10 border-b border-l border-gold/40" />
-      <span aria-hidden="true" className="absolute bottom-5 right-5 h-10 w-10 border-b border-r border-gold/40" />
+      <span aria-hidden="true" className="absolute left-5 top-5 h-10 w-10 border-l border-t border-electric/40" />
+      <span aria-hidden="true" className="absolute right-5 top-5 h-10 w-10 border-r border-t border-electric/40" />
+      <span aria-hidden="true" className="absolute bottom-5 left-5 h-10 w-10 border-b border-l border-electric/40" />
+      <span aria-hidden="true" className="absolute bottom-5 right-5 h-10 w-10 border-b border-r border-electric/40" />
 
       <motion.p
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: opening ? 0 : 1, y: opening ? 0 : 8 }}
         transition={{ duration: 0.8, delay: opening ? 0 : 0.15 }}
-        className="mb-2 text-[10px] font-medium uppercase tracking-[0.4em] text-warm"
+        className="mb-2 text-[10px] font-medium uppercase tracking-[0.4em] text-mute"
       >
         Invitación digital
       </motion.p>
@@ -74,7 +74,7 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: opening ? 0 : 1 }}
         transition={{ duration: 0.8, delay: opening ? 0 : 0.3 }}
-        className="mb-10 font-script text-3xl text-gold sm:text-4xl"
+        className="mb-10 font-script text-3xl text-electric sm:text-4xl"
       >
         {wedding.phrases.opening}
       </motion.p>
@@ -90,7 +90,7 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
       >
         {/* Tarjeta interior */}
         <motion.div
-          className="absolute left-1/2 top-1/2 w-[86%] border border-gold/35 bg-silk px-6 py-8 text-center shadow-[0_12px_44px_rgba(41,39,35,0.12)]"
+          className="absolute left-1/2 top-1/2 w-[86%] border border-electric/35 bg-silk px-6 py-8 text-center shadow-[0_12px_44px_rgba(41,39,35,0.12)]"
           style={{ x: '-50%', y: '-50%' }}
           initial={false}
           animate={
@@ -100,19 +100,19 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
           }
           transition={{ duration: 0.6, delay: reduce ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div aria-hidden="true" className="pointer-events-none absolute inset-2 border border-gold/20" />
-          <p className="font-script text-2xl text-gold">{wedding.couple.monogram}</p>
+          <div aria-hidden="true" className="pointer-events-none absolute inset-2 border border-electric/20" />
+          <p className="font-script text-2xl text-electric">{wedding.couple.monogram}</p>
           <p className="mt-3 font-serif text-[1.35rem] font-medium leading-tight text-ink sm:text-2xl">
             {wedding.couple.brideName} &amp; {wedding.couple.groomName}
           </p>
-          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.32em] text-warm">
+          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.32em] text-mute">
             {wedding.date.displayShort}
           </p>
         </motion.div>
 
         {/* Mitad superior del sobre */}
         <motion.div
-          className="absolute inset-x-0 top-0 h-1/2 border border-gold/40 bg-gradient-to-b from-[#F3ECDF] to-[#EDE4D4]"
+          className="absolute inset-x-0 top-0 h-1/2 border border-electric/40 bg-gradient-to-b from-[#F1F4FB] to-[#E2E8F5]"
           initial={false}
           animate={reduce ? { opacity: opening ? 0 : 1 } : { y: opening ? '-115%' : 0, opacity: opening ? 0 : 1 }}
           transition={
@@ -124,7 +124,7 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
 
         {/* Mitad inferior del sobre */}
         <motion.div
-          className="absolute inset-x-0 bottom-0 h-1/2 border border-gold/40 bg-gradient-to-b from-[#EFE7D9] to-[#E9DFCE]"
+          className="absolute inset-x-0 bottom-0 h-1/2 border border-electric/40 bg-gradient-to-b from-[#EAEFF8] to-[#DDE4F2]"
           initial={false}
           animate={reduce ? { opacity: opening ? 0 : 1 } : { y: opening ? '115%' : 0, opacity: opening ? 0 : 1 }}
           transition={
@@ -137,7 +137,7 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
         {/* Costura central */}
         <motion.div
           aria-hidden="true"
-          className="absolute left-4 right-4 top-1/2 h-px bg-gold/50"
+          className="absolute left-4 right-4 top-1/2 h-px bg-electric/50"
           initial={false}
           animate={{ opacity: opening ? 0 : 1 }}
           transition={{ duration: 0.2 }}
@@ -149,9 +149,9 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
           style={{
             x: '-50%',
             y: '-50%',
-            background: 'radial-gradient(circle at 32% 30%, #CDB584, #A98C55 62%, #96793F)',
+            background: 'radial-gradient(circle at 32% 30%, #5F84FF, #1F51FF 62%, #0F2FAE)',
             boxShadow:
-              'inset 0 2px 6px rgba(255,252,247,0.4), inset 0 -3px 8px rgba(41,39,35,0.4), 0 2px 12px rgba(41,39,35,0.28)',
+              'inset 0 2px 6px rgba(255,252,247,0.4), inset 0 -3px 8px rgba(20,25,45,0.4), 0 2px 12px rgba(20,25,45,0.28)',
           }}
           initial={false}
           animate={opening ? { scale: 1.16, opacity: 0 } : { scale: [1, 1.045, 1], opacity: 1 }}
@@ -170,7 +170,7 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
         aria-hidden="true"
         animate={{ opacity: opening ? 0 : undefined }}
         transition={{ duration: 0.2 }}
-        className="animate-soft-pulse mt-10 text-[10px] font-medium uppercase tracking-[0.32em] text-warm"
+        className="animate-soft-pulse mt-10 text-[10px] font-medium uppercase tracking-[0.32em] text-mute"
       >
         {wedding.phrases.openingHint}
       </motion.p>

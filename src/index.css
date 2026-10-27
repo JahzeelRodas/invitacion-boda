@@ -24,15 +24,15 @@
   body {
     @apply bg-ivory font-sans text-ink antialiased;
     overflow-x: clip;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.11 0 0 0 0 0.14 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   ::selection {
-    background: rgba(180, 154, 103, 0.28);
+    background: rgba(31, 81, 255, 0.16);
   }
 
   :focus-visible {
-    outline: 1px solid #b49a67;
+    outline: 1px solid #1f51ff;
     outline-offset: 3px;
   }
 
@@ -45,20 +45,20 @@
 @layer components {
   /* Botón editorial con filete dorado */
   .btn-hairline {
-    @apply inline-flex items-center justify-center gap-2 border border-gold/60 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-ink transition-colors duration-300 hover:bg-gold/10;
+    @apply inline-flex items-center justify-center gap-2 border border-electric/60 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-ink transition-colors duration-300 hover:bg-electric/10;
   }
 
   .btn-hairline--light {
-    @apply inline-flex items-center justify-center gap-2 border border-champagne/70 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-silk transition-colors duration-300 hover:bg-champagne/15;
+    @apply inline-flex items-center justify-center gap-2 border border-azure/70 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-silk transition-colors duration-300 hover:bg-azure/15;
   }
 
   /* Campos de formulario estilo papelería */
   .field-input {
-    @apply w-full border-b border-gold/40 bg-transparent py-2.5 text-[15px] text-ink placeholder:text-warm/50 focus:border-gold focus:outline-none;
+    @apply w-full border-b border-electric/40 bg-transparent py-2.5 text-[15px] text-ink placeholder:text-mute/50 focus:border-electric focus:outline-none;
   }
 
   .field-label {
-    @apply block text-[10px] font-medium uppercase tracking-[0.3em] text-warm;
+    @apply block text-[10px] font-medium uppercase tracking-[0.3em] text-mute;
   }
 
   /* Zoom sutil de galería solo en dispositivos con puntero */

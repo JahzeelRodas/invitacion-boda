@@ -12,13 +12,13 @@ export default function DressCodeSection() {
     <section id="vestimenta" className="paper-texture bg-ink py-24 text-silk md:py-32" aria-labelledby="vestimenta-title">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <Reveal>
-          <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-champagne/45 text-champagne" aria-hidden="true">
+          <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-azure/45 text-azure" aria-hidden="true">
             <Shirt size={19} strokeWidth={1.4} />
           </span>
         </Reveal>
 
         <Reveal delay={0.06}>
-          <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.35em] text-champagne">{dressCode.eyebrow}</p>
+          <p className="mt-6 text-[11px] font-medium uppercase tracking-[0.35em] text-azure">{dressCode.eyebrow}</p>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 id="vestimenta-title" className="mt-4 font-serif text-3xl font-medium md:text-[2.9rem] md:leading-tight">
@@ -26,7 +26,7 @@ export default function DressCodeSection() {
           </h2>
         </Reveal>
         <Reveal delay={0.14}>
-          <p className="mt-5 font-script text-2xl text-champagne/90 md:text-[1.7rem]">{dressCode.type}</p>
+          <p className="mt-5 font-script text-2xl text-azure/90 md:text-[1.7rem]">{dressCode.type}</p>
         </Reveal>
 
         <Reveal delay={0.18}>

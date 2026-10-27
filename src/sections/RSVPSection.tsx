@@ -116,18 +116,18 @@ export default function RSVPSection() {
         <SectionHeader eyebrow={rsvp.eyebrow} title={rsvp.title} />
 
         <Reveal delay={0.1}>
-          <p className="mx-auto mt-8 max-w-md text-sm leading-[1.9] text-warm md:text-[15px]">{rsvp.intro}</p>
+          <p className="mx-auto mt-8 max-w-md text-sm leading-[1.9] text-mute md:text-[15px]">{rsvp.intro}</p>
         </Reveal>
 
         {deadlinePassed && (
           <Reveal delay={0.12}>
-            <p className="mt-8 border border-gold/30 bg-champagne/10 px-5 py-4 text-sm leading-relaxed text-ink/80">
+            <p className="mt-8 border border-electric/30 bg-azure/10 px-5 py-4 text-sm leading-relaxed text-ink/80">
               El plazo de confirmación venció{deadlineLabel ? ` el ${deadlineLabel}` : ''}. Si aún deseas acompañarnos,{' '}
               <a
                 href={whatsappUrl(rsvp.whatsappPhone, `¡Hola, ${couple.brideName} y ${couple.groomName}! Quisiera confirmar mi asistencia.`)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gold underline underline-offset-4"
+                className="text-electric underline underline-offset-4"
               >
                 escríbenos por WhatsApp
               </a>
@@ -138,9 +138,9 @@ export default function RSVPSection() {
 
         {state === 'endpointSent' ? (
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-10">
-            <Heart size={20} strokeWidth={1.4} className="mx-auto text-gold" aria-hidden="true" />
-            <p className="mt-5 font-script text-4xl text-gold">¡Gracias!</p>
-            <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-warm">
+            <Heart size={20} strokeWidth={1.4} className="mx-auto text-electric" aria-hidden="true" />
+            <p className="mt-5 font-script text-4xl text-electric">¡Gracias!</p>
+            <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-mute">
               Hemos recibido tu confirmación
               {form.attending === 'yes' ? ' — esperamos verte ahí' : ''}. {wedding.phrases.closingNote}
             </p>
@@ -148,16 +148,16 @@ export default function RSVPSection() {
           </motion.div>
         ) : state === 'whatsappPrepared' ? (
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-10">
-            <MessageCircle size={20} strokeWidth={1.4} className="mx-auto text-gold" aria-hidden="true" />
+            <MessageCircle size={20} strokeWidth={1.4} className="mx-auto text-electric" aria-hidden="true" />
             <p className="mt-5 font-serif text-2xl text-ink">Mensaje preparado</p>
-            <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-warm">
+            <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-mute">
               Se abrió WhatsApp con tu confirmación lista. Envíalo desde la app para completar tu respuesta — si no se
               abrió,
               <a
                 href={whatsappUrl(rsvp.whatsappPhone, buildWhatsAppMessage(form))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gold underline underline-offset-4"
+                className="text-electric underline underline-offset-4"
               >
                 &nbsp;ábrelo aquí
               </a>
@@ -198,7 +198,7 @@ export default function RSVPSection() {
                         onChange={() => setForm((current) => ({ ...current, attending: 'yes' }))}
                         className="sr-only peer"
                       />
-                      <span className="inline-block border border-gold/40 px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.22em] text-warm transition-colors peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-ink">
+                      <span className="inline-block border border-electric/40 px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.22em] text-mute transition-colors peer-checked:border-electric peer-checked:bg-electric/10 peer-checked:text-ink">
                         Sí, asistiré
                       </span>
                     </label>
@@ -211,7 +211,7 @@ export default function RSVPSection() {
                         onChange={() => setForm((current) => ({ ...current, attending: 'no' }))}
                         className="sr-only peer"
                       />
-                      <span className="inline-block border border-gold/40 px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.22em] text-warm transition-colors peer-checked:border-gold peer-checked:bg-gold/10 peer-checked:text-ink">
+                      <span className="inline-block border border-electric/40 px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.22em] text-mute transition-colors peer-checked:border-electric peer-checked:bg-electric/10 peer-checked:text-ink">
                         No podré ir
                       </span>
                     </label>
@@ -275,13 +275,13 @@ export default function RSVPSection() {
                       href={whatsappUrl(rsvp.whatsappPhone, buildWhatsAppMessage(form))}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.25em] text-warm underline underline-offset-4 transition-colors hover:text-gold"
+                      className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.25em] text-mute underline underline-offset-4 transition-colors hover:text-electric"
                     >
                       <MessageCircle size={12} strokeWidth={1.5} aria-hidden="true" />
                       Confirmar por WhatsApp
                     </a>
                   ) : (
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-warm/80">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-mute/80">
                       Se abrirá WhatsApp con tu mensaje listo
                     </p>
                   )}
@@ -295,7 +295,7 @@ export default function RSVPSection() {
           <button
             type="button"
             onClick={resetForm}
-            className="mt-8 text-[10px] font-medium uppercase tracking-[0.25em] text-warm underline underline-offset-4 transition-colors hover:text-gold"
+            className="mt-8 text-[10px] font-medium uppercase tracking-[0.25em] text-mute underline underline-offset-4 transition-colors hover:text-electric"
           >
             Enviar otra confirmación
           </button>

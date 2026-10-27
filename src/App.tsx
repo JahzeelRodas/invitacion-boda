@@ -40,7 +40,7 @@ function Shell() {
     <>
       <a
         href="#historia"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:border focus:border-gold focus:bg-silk focus:px-4 focus:py-2 focus:text-xs focus:uppercase focus:tracking-[0.2em]"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:border focus:border-electric focus:bg-silk focus:px-4 focus:py-2 focus:text-xs focus:uppercase focus:tracking-[0.2em]"
       >
         Saltar al contenido
       </a>
@@ -60,14 +60,14 @@ function Shell() {
         <RSVPSection />
         <ClosingSection />
 
-        <footer className="border-t border-gold/20 bg-ivory px-6 py-10 text-center">
-          <p className="font-script text-2xl text-gold">{wedding.couple.monogram}</p>
+        <footer className="border-t border-electric/20 bg-ivory px-6 py-10 text-center">
+          <p className="font-script text-2xl text-electric">{wedding.couple.monogram}</p>
           {wedding.isDemoContent ? (
-            <p className="mt-4 text-[9px] font-medium uppercase tracking-[0.3em] text-warm/70">
+            <p className="mt-4 text-[9px] font-medium uppercase tracking-[0.3em] text-mute/70">
               Contenido de ejemplo — personaliza la invitación en src/config/wedding.ts
             </p>
           ) : (
-            <p className="mt-4 text-[9px] font-medium uppercase tracking-[0.3em] text-warm/70">
+            <p className="mt-4 text-[9px] font-medium uppercase tracking-[0.3em] text-mute/70">
               {wedding.date.displayShort} · {wedding.date.place}
             </p>
           )}

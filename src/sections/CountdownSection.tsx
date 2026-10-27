@@ -17,7 +17,7 @@ function Unit({ value, label, delay }: UnitProps) {
       <span className="font-serif text-[clamp(2.6rem,9vw,4.5rem)] font-medium leading-none text-ink tabular-nums">
         {value}
       </span>
-      <span className="mt-3 text-[10px] font-medium uppercase tracking-[0.32em] text-warm">{label}</span>
+      <span className="mt-3 text-[10px] font-medium uppercase tracking-[0.32em] text-mute">{label}</span>
     </Reveal>
   )
 }
@@ -25,7 +25,7 @@ function Unit({ value, label, delay }: UnitProps) {
 function Colon({ delay }: { delay: number }) {
   return (
     <Reveal delay={delay} aria-hidden="true" className="hidden items-start sm:flex">
-      <span className="font-serif text-4xl font-light text-gold/60 md:text-5xl">:</span>
+      <span className="font-serif text-4xl font-light text-electric/60 md:text-5xl">:</span>
     </Reveal>
   )
 }
@@ -66,7 +66,7 @@ export default function CountdownSection() {
         )}
 
         <Reveal delay={0.2}>
-          <p className="mt-12 text-xs uppercase tracking-[0.3em] text-warm">{wedding.date.displayLong}</p>
+          <p className="mt-12 text-xs uppercase tracking-[0.3em] text-mute">{wedding.date.displayLong}</p>
         </Reveal>
       </div>
     </section>

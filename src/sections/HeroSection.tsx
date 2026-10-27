@@ -41,7 +41,7 @@ export default function HeroSection({ active }: HeroSectionProps) {
           initial={{ opacity: 0, y: 12 }}
           animate={active ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: baseDelay }}
-          className="text-[11px] font-medium uppercase tracking-[0.4em] text-champagne [text-shadow:0_1px_18px_rgba(41,39,35,0.5)]"
+          className="text-[11px] font-medium uppercase tracking-[0.4em] text-azure [text-shadow:0_1px_18px_rgba(41,39,35,0.5)]"
         >
           {wedding.phrases.heroKicker}
         </motion.p>
@@ -53,7 +53,7 @@ export default function HeroSection({ active }: HeroSectionProps) {
           className="mt-5 font-serif text-[clamp(3rem,11vw,6.5rem)] font-medium leading-[0.98] text-silk [text-shadow:0_2px_28px_rgba(41,39,35,0.45)]"
         >
           {wedding.couple.brideName}
-          <span className="my-1 block font-script text-[0.55em] leading-none text-champagne">&amp;</span>
+          <span className="my-1 block font-script text-[0.55em] leading-none text-azure">&amp;</span>
           {wedding.couple.groomName}
         </motion.h1>
 
@@ -63,7 +63,7 @@ export default function HeroSection({ active }: HeroSectionProps) {
           transition={{ duration: 1, delay: baseDelay + 0.35 }}
           className="mt-7 flex flex-col items-center gap-3"
         >
-          <span aria-hidden="true" className="h-px w-16 bg-champagne/70" />
+          <span aria-hidden="true" className="h-px w-16 bg-azure/70" />
           <p className="text-xs font-medium uppercase tracking-[0.32em] text-silk/95 [text-shadow:0_1px_14px_rgba(41,39,35,0.55)]">
             {wedding.date.displayLong} · {wedding.date.place}
           </p>

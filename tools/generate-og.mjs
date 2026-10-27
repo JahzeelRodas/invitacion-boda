@@ -77,8 +77,8 @@ const H = 630
 const px = Buffer.alloc(W * H * 3)
 
 const IVORY = [248, 245, 239]
-const CHAMPAGNE = [214, 190, 152]
-const GOLD = [180, 154, 103]
+const AZURE = [201, 216, 242]
+const ELECTRIC = [31, 81, 255]
 
 function blend(base, overlay, amount) {
   return [
@@ -97,11 +97,11 @@ function setPixel(x, y, color) {
 
 for (let y = 0; y < H; y++) {
   const t = y / (H - 1)
-  const row = blend(IVORY, CHAMPAGNE, t)
+  const row = blend(IVORY, AZURE, t)
   for (let x = 0; x < W; x++) {
     // Leve sombreado diagonal para dar profundidad.
     const shade = ((x / W) * 0.08 * (1 - t)) + t * 0.04
-    const color = blend(row, CHAMPAGNE, shade * 0.5)
+    const color = blend(row, AZURE, shade * 0.5)
     setPixel(x, y, color)
   }
 }
@@ -115,8 +115,8 @@ function rectOutline(x0, y0, x1, y1, thickness, color) {
     }
   }
 }
-rectOutline(40, 40, W - 41, H - 41, 2, GOLD)
-rectOutline(50, 50, W - 51, H - 51, 1, blend(GOLD, IVORY, 0.35))
+rectOutline(40, 40, W - 41, H - 41, 2, ELECTRIC)
+rectOutline(50, 50, W - 51, H - 51, 1, blend(ELECTRIC, IVORY, 0.35))
 
 // Ornamento central: rombo + filetes horizontales
 const cx = W / 2
@@ -126,13 +126,13 @@ for (let y = cy - r; y <= cy + r; y++) {
   const dx = r - Math.abs(y - cy)
   for (let x = cx - dx; x <= cx + dx; x++) {
     const isEdge = Math.abs(dx - Math.abs(x - cx)) < 1.6
-    if (isEdge) setPixel(x, y, GOLD)
+    if (isEdge) setPixel(x, y, ELECTRIC)
   }
 }
-for (let x = cx - 260; x <= cx - r - 18; x++) setPixel(x, cy, GOLD)
-for (let x = cx + r + 18; x <= cx + 260; x++) setPixel(x, cy, GOLD)
-for (let x = cx - 300; x <= cx - 266; x++) setPixel(x, cy, blend(GOLD, IVORY, 0.4))
-for (let x = cx + 266; x <= cx + 300; x++) setPixel(x, cy, blend(GOLD, IVORY, 0.4))
+for (let x = cx - 260; x <= cx - r - 18; x++) setPixel(x, cy, ELECTRIC)
+for (let x = cx + r + 18; x <= cx + 260; x++) setPixel(x, cy, ELECTRIC)
+for (let x = cx - 300; x <= cx - 266; x++) setPixel(x, cy, blend(ELECTRIC, IVORY, 0.4))
+for (let x = cx + 266; x <= cx + 300; x++) setPixel(x, cy, blend(ELECTRIC, IVORY, 0.4))
 
 writeFileSync(join(root, 'public', 'og-image.png'), encodePNG(px, W, H))
 console.log('✔ public/og-image.png creado (1200×630)')
@@ -145,9 +145,9 @@ for (let y = 0; y < S; y++) {
   for (let x = 0; x < S; x++) {
     const i = (y * S + x) * 3
     const t = (y / (S - 1)) * 0.5
-    icon[i] = Math.round(IVORY[0] + (CHAMPAGNE[0] - IVORY[0]) * t)
-    icon[i + 1] = Math.round(IVORY[1] + (CHAMPAGNE[1] - IVORY[1]) * t)
-    icon[i + 2] = Math.round(IVORY[2] + (CHAMPAGNE[2] - IVORY[2]) * t)
+    icon[i] = Math.round(IVORY[0] + (AZURE[0] - IVORY[0]) * t)
+    icon[i + 1] = Math.round(IVORY[1] + (AZURE[1] - IVORY[1]) * t)
+    icon[i + 2] = Math.round(IVORY[2] + (AZURE[2] - IVORY[2]) * t)
   }
 }
 const ccx = S / 2
@@ -157,9 +157,9 @@ for (let y = 0; y < S; y++) {
     const dist = Math.hypot(x - ccx, y - ccy)
     if (dist >= 62 && dist <= 65) {
       const i = (y * S + x) * 3
-      icon[i] = GOLD[0]
-      icon[i + 1] = GOLD[1]
-      icon[i + 2] = GOLD[2]
+      icon[i] = ELECTRIC[0]
+      icon[i + 1] = ELECTRIC[1]
+      icon[i + 2] = ELECTRIC[2]
     }
   }
 }
