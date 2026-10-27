@@ -54,29 +54,25 @@ export const wedding = {
 
   /* ── PAREJA ──────────────────────────────────────────────────────────── */
   couple: {
-    /** DEMO: reemplazar por los nombres reales. */
-    brideName: 'Alejandro',
-    brideFullName: 'Alejandro Fuentes Alcántara',
-    groomName: 'Margot',
-    groomFullName: 'Margot Ríos Mendoza',
+    brideName: 'Margot',
+    brideFullName: 'Margarita Ríos Mendoza',
+    groomName: 'Alejandro',
+    groomFullName: 'Alejandro Fuentes Alcántara',
     /** Iniciales para el sello, favicon y detalles ornamentales. */
-    initials: 'A·M',
-    monogram: 'A & M',
+    initials: 'M·A',
+    monogram: 'M & A',
     /** Si los novios tienen un hashtag, añádelo aquí (opcional). */
     hashtag: '',
   },
 
   /* ── FECHA DEL MATRIMONIO ────────────────────────────────────────────── */
   date: {
-    /**
-     * DEMO: fecha y hora local del evento, sin indicador de zona.
-     * Formato: "YYYY-MM-DDTHH:mm:ss" (24 horas).
-     */
+    /** Fecha y hora local del evento, sin indicador de zona. Formato: "YYYY-MM-DDTHH:mm:ss". */
     isoDateTime: '2026-11-21T11:30:00',
     /** Zona horaria IANA del lugar del evento (p. ej. "America/Santiago"). */
     timeZone: 'America/La Paz',
     /** Etiquetas de visualización. */
-    displayLong: 'Sábado 21 de Noviembre de 2026',
+    displayLong: 'Sábado 21 de noviembre de 2026',
     displayShort: '21 · 11 · 2026',
     /** Ciudad o lugar resumido, para la portada. */
     place: 'La Paz, Bolivia',
@@ -94,9 +90,10 @@ export const wedding = {
 
   /* ── PORTADA ─────────────────────────────────────────────────────────── */
   hero: {
-    /** Reemplaza /public/images/hero-couple.svg por la fotografía real. */
     image: '/images/4.jpg',
-    alt: 'Fotografía principal de los novios, Alejandro y Margot',
+    alt: 'Margot y Alejandro mostrando su anillo de compromiso',
+    /** Encuadre de la fotografía en la portada (CSS object-position). */
+    position: 'center 38%',
   },
 
   /* ── NUESTRA HISTORIA ────────────────────────────────────────────────── */
@@ -110,21 +107,21 @@ export const wedding = {
         title: 'Un día cualquiera que lo cambió todo',
         text: 'Texto de ejemplo: el relato breve del primer encuentro. Sustituye este párrafo por la anécdota real de los novios.',
         image: '/images/11.jpg',
-        alt: 'Fotografía del primer momento de la historia de la pareja',
+        alt: 'Margot y Alejandro bailando tomados de las manos en el parque',
       },
       {
         label: 'Los años juntos',
         title: 'Viajes, risas y una vida en común',
         text: 'Texto de ejemplo: un párrafo sobre lo que han construido juntos. Sustituye por el texto real.',
         image: '/images/15.jpg',
-        alt: 'Fotografía del segundo momento de la historia de la pareja',
+        alt: 'Margot y Alejandro abrazados en el mirador junto a la laguna',
       },
       {
         label: 'La propuesta',
         title: 'La pregunta que nos trae hasta aquí',
         text: 'Texto de ejemplo: el momento de la propuesta. Sustituye por el texto real.',
         image: '/images/9.jpg',
-        alt: 'Fotografía del momento de la propuesta',
+        alt: 'Margot y Alejandro abrazados bajo la pérgola de madera',
       },
     ] satisfies StoryMoment[],
   },
@@ -134,14 +131,10 @@ export const wedding = {
     title: 'Momentos',
     eyebrow: 'Galería',
     images: [
-      { src: '/images/gallery-1.svg', alt: 'Fotografía de ejemplo de los novios — vertical', width: 800, height: 1200 },
-      { src: '/images/gallery-2.svg', alt: 'Fotografía de ejemplo de los novios — horizontal', width: 1000, height: 700 },
-      { src: '/images/gallery-3.svg', alt: 'Fotografía de ejemplo de los novios — cuadrada', width: 900, height: 900 },
-      { src: '/images/gallery-4.svg', alt: 'Fotografía de ejemplo de los novios — vertical', width: 900, height: 1250 },
-      { src: '/images/gallery-5.svg', alt: 'Fotografía de ejemplo de los novios — horizontal', width: 1000, height: 720 },
-      { src: '/images/gallery-6.svg', alt: 'Fotografía de ejemplo de los novios — vertical', width: 800, height: 1050 },
-      { src: '/images/gallery-7.svg', alt: 'Fotografía de ejemplo de los novios — cuadrada', width: 950, height: 950 },
-      { src: '/images/gallery-8.svg', alt: 'Fotografía de ejemplo de los novios — vertical', width: 880, height: 1180 },
+      { src: '/images/4.jpg', alt: 'El anillo de compromiso — ceremonia civil', width: 1200, height: 1600 },
+      { src: '/images/9.jpg', alt: 'Abrazo bajo la pérgola de madera', width: 1200, height: 1600 },
+      { src: '/images/11.jpg', alt: 'Bailando tomados de las manos en el parque', width: 1200, height: 1600 },
+      { src: '/images/15.jpg', alt: 'Juntos frente a la laguna, bajo un cielo azul', width: 1200, height: 1600 },
     ] satisfies GalleryImage[],
   },
 
@@ -201,13 +194,13 @@ export const wedding = {
   /* ── MÚSICA AMBIENTAL ────────────────────────────────────────────────── */
   music: {
     /**
-     * DEMO: pieza generada como marcador. Sustituye el archivo por una
-     * canción propia o con licencia (p. ej. /public/audio/nuestra-cancion.mp3)
-     * y actualiza `src`, `title` y `artist`.
+     * Canción configurada por los novios: "Disparo al Corazón" (Ricky Martin).
+     * ⚠️ Es una canción comercial: asegúrate de tener autorización para
+     * reproducirla, o sustitúyela por una versión propia/licenciada.
      */
-    src: '/audio/Ricky Martin - Disparo al Corazón.mp3',
-    title: 'Disparo al Corazon',
-    artist: 'Ricky Martin → music',
+    src: '/audio/disparo-al-corazon.mp3',
+    title: 'Disparo al Corazón',
+    artist: 'Ricky Martin',
     /** Volumen entre 0 y 1. */
     volume: 0.45,
   },
@@ -227,7 +220,7 @@ export const wedding = {
      * Deja ambos vacíos para mostrar el espacio de reserva.
      */
     youtubeVideoId: '',
-    mp4Src: '/images/grupo.mp4',
+    mp4Src: '/video/grupo.mp4',
   },
 
   /* ── CONFIRMACIÓN DE ASISTENCIA (RSVP) ───────────────────────────────── */
@@ -252,8 +245,8 @@ export const wedding = {
 
   /* ── CIERRE ──────────────────────────────────────────────────────────── */
   closing: {
-    image: '/images/closing.svg',
-    alt: 'Fotografía de cierre de los novios',
+    image: '/images/15.jpg',
+    alt: 'Margot y Alejandro abrazados frente a la laguna, bajo un cielo azul',
   },
 } as const
 

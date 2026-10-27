@@ -19,6 +19,7 @@ export default function HeroSection({ active }: HeroSectionProps) {
         src={wedding.hero.image}
         alt={wedding.hero.alt}
         decoding="async"
+        style={{ objectPosition: wedding.hero.position }}
         className="absolute inset-0 h-full w-full object-cover"
         initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 1.02 }}
         animate={active ? (reduce ? { opacity: 1 } : { opacity: 1, scale: 1.12 }) : {}}

@@ -20,9 +20,11 @@ Requisitos: Node.js 18 o superior.
 
 ---
 
-## 2. ⚠️ Contenido de ejemplo
+## 2. ⚠️ Estado del contenido
 
-Todos los datos actuales (nombres «Valentina & Sebastián», fecha 05·12·2026, lugares, teléfonos) son **placeholders de demostración**. Mientras `isDemoContent` esté en `true`, la página muestra un aviso discreto al pie indicándolo.
+Los datos principales ya están configurados (nombres, fecha, lugares, fotografías, canción y video). Mientras `isDemoContent` esté en `true` (y salvo que se indique "texto de ejemplo"), la página muestra un aviso discreto al pie indicando que aún hay contenido de ejemplo pendiente.
+
+**Pendiente de completar:** textos de la historia, nombre del grupo musical, número de WhatsApp real y poster del video.
 
 ## 3. Personalización — todo vive en un solo archivo
 
@@ -73,20 +75,20 @@ Recomendaciones: exporta en **WebP/AVIF**, ajusta `width`/`height` en la configu
 
 ### 3.4 Canción de fondo
 
-Coloca tu canción (MP3 optimizado, ~128 kbps) en `public/audio/` y actualiza:
+La canción configurada es **«Disparo al Corazón» (Ricky Martin)** en `public/audio/disparo-al-corazon.mp3`:
 
 ```ts
 music: {
-  src: '/audio/nuestra-cancion.mp3',
-  title: 'Nombre de la canción',
-  artist: 'Intérprete',
+  src: '/audio/disparo-al-corazon.mp3',
+  title: 'Disparo al Corazón',
+  artist: 'Ricky Martin',
   volume: 0.45,   // 0 a 1
 }
 ```
 
-- Solo usa canciones **propias o con licencia**.
+- ⚠️ Es una **canción comercial**: asegúrate de contar con autorización para reproducirla, o sustitúyela por una versión propia o con licencia.
 - Si `src` queda vacío, el reproductor no aparece. Si el archivo falla, la invitación funciona con normalidad y el reproductor lo indica discretamente.
-- La actual incluida (`ambience-demo.wav`) es una pieza generada sintéticamente, sin derechos de terceros; puedes regenerarla con `npm run assets:audio`.
+- Para regenerar la antigua pieza de demostración (opcional): `npm run assets:audio`.
 
 ### 3.5 Ceremonia y recepción
 
