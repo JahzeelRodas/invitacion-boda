@@ -1,39 +1,12 @@
 /* ════════════════════════════════════════════════════════════════════════════
    CONFIGURACIÓN DE LA INVITACIÓN — DISEÑO B ("MODELO ELEGANTE 2026")
-   ────────────────────────────────────────────────────────────────────────────
-   ⚠️  CONTENIDO DE EJEMPLO (DEMO)
-
-   Igual que en el diseño A, toda la invitación se maneja desde este único
-   archivo. Recorre pág. a pág. en orden vertical como en el original:
-
-     1  Hero (foto en arco + nombres + fecha)      b.hero
-     2  Mensaje de bienvenida (banda ondulada)     b.message
-     3  Fecha + cuenta regresiva + agendado        b.date / b.countdown
-     4  "¡Hemos reservado!" pases                  b.pases
-     5  Bendición + padres                         b.family.parents
-     6  Nuestros padrinos (religión / civil)       b.family.godparents
-     7  Frase sobre foto + Ubicación               b.quote
-     8  Ceremonia religiosa                        b.locations.ceremony
-     9  Recepción social                           b.locations.reception
-     10 Código de vestimenta                       b.dressCode
-     11 Itinerario (línea vertical con iconos)     b.itinerary
-     12 Sugerencia de regalos (sobres + QR)        b.gifts
-     13 Solo adultos                               b.adults
-     14 Subir fotos                                b.photos
-     15 Confirmación de asistencia                 b.rsvp
-     16 Álbum de fotos + collage                   b.album
-     17 Pie de página                              b.footer
-   ────────────────────────────────────────────────────────────────────────── */
+   ──────────────────────────────────────────────────────────────────────────── */
 
 export interface BLocation {
-  /** Hora destacada a la izquierda del panel. */
   time: string
-  /** Nombre del lugar (negrita) y dirección (regular). */
   venueName: string
   addressLines: string[]
-  /** Enlace "Ver ubicación" (Google Maps). Vacío ⇒ botón apunta a maps genérico. */
   mapsUrl?: string
-  /** Foto en marco de arco. */
   image: string
   imageAlt: string
 }
@@ -50,18 +23,27 @@ export interface BItineraryItem {
     | 'bouquet'
 }
 
+export interface BMusicGroup {
+  name: string
+  detail?: string
+  video?: {
+    src: string
+    poster?: string
+  } | null
+  photo?: {
+    src: string
+    alt: string
+  } | null
+}
+
 export const designB = {
-  isDemoContent: true,
+  isDemoContent: false,
 
   /* ── 1 · HERO ─────────────────────────────────────────────────────────── */
   hero: {
-    /* Nombres tal como aparecen sobre la foto (soportan "&" o "y"). */
     namesLine: 'Alejandro & Margot',
-    /** Monograma (se usa en el círculo de confirmación). */
     monogram: 'AyM',
-    /** Fecha corta grande bajo los nombres. */
     dateShort: '21 . 11 . 26',
-    /** Foto de fondo del arco (vertical, la cara queda arriba). */
     photo: '/images/principal.jpg',
     photoAlt: 'Los novios junto a la puerta azul',
   },
@@ -71,20 +53,17 @@ export const designB = {
     'Nos haría Felices contar con su presencia en este día tan importante, donde juntos celebramos el inicio de nuestra historia como esposos y compartiremos momentos que quedarán para siempre en nuestros corazones.',
 
   /* ── 3 · CANCIÓN ──────────────────────────────────────────────────────── */
-song: {
-  hint: 'Presiona el[]para escuchar nuestra canción',
-  src: '/audio/disparo-al-corazon.mp3',
-  audioSrc: '/audio/disparo-al-corazon.mp3',
-},
+  song: {
+    hint: 'Presiona el botón para escuchar nuestra canción',
+    src: '/audio/disparo-al-corazon.mp3',
+    audioSrc: '/audio/disparo-al-corazon.mp3',
+  },
 
   /* ── 4 · FECHA / CUENTA REGRESIVA / AGENDA ────────────────────────────── */
   date: {
-    /** Fecha larga blanca sobre la foto. */
     longLine: 'Sábado, 21 de noviembre de 2026',
     short: '¡NOS CASAMOS!',
-    /** Zona horaria del evento (Bolivia: America/La_Paz, UTC-4). */
     timeZone: 'America/La_Paz',
-    /** Instante del evento en formato local. Se usa para la cuenta regresiva. */
     startLocal: '2026-11-21T11:30:00',
     labels: {
       before: 'Solo faltan…',
@@ -93,14 +72,13 @@ song: {
       minutes: 'Min.',
       seconds: 'Seg.',
     },
-    /** Enlaces para añadir al calendario (iguales a los del original). */
     gcalUrls: [
       'https://calendar.app.google/xvUMzXYbACtGHo9a6',
       'https://calendar.app.google/CzMZgbgY5ekUPrYF7',
     ],
-    //calendarLabel: 'Agendar en el calendario',
     countdownPhoto: '/images/9.jpg',
     photoAlt: 'Los novios entre ruinas de piedra',
+    calendarLabel: 'Añadir al Calendario',
   },
 
   /* ── 5 · PASES ────────────────────────────────────────────────────────── */
@@ -173,21 +151,19 @@ song: {
   },
 
   /* ── 11 · ITINERARIO ──────────────────────────────────────────────────── */
-itinerary: {
-  title: 'Itinerario',
-  background: '#24333E',
-  photoAlt: 'Los novios bailando',
-  items: [
-    { time: '11:30 Hrs.', label: 'Ceremonia\nReligiosa', icon: 'church' },
-    { time: '16:30 Hrs.', label: 'Recepción\nSocial', icon: 'runway' },
-    { time: '20:00 Hrs.', label: 'Cena', icon: 'dinner' },
-    { time: '21:00 Hrs.', label: 'Torta', icon: 'dance' },
-  ] as BItineraryItem[],
-},
+  itinerary: {
+    title: 'Itinerario',
+    background: '#24333E',
+    photoAlt: 'Los novios bailando',
+    items: [
+      { time: '11:30 Hrs.', label: 'Ceremonia\nReligiosa', icon: 'church' },
+      { time: '16:30 Hrs.', label: 'Recepción\nSocial', icon: 'runway' },
+      { time: '20:00 Hrs.', label: 'Cena', icon: 'dinner' },
+      { time: '21:00 Hrs.', label: 'Torta', icon: 'dance' },
+    ] as BItineraryItem[],
+  },
 
-  /* ── 11b · GRUPOS MUSICALES (van justo tras el itinerario) ───────────── */
-  /** Un grupo puede traer video (con póster) y/o fotografía; deja
-      `video: null` o `photo: null` para omitir el material. */
+  /* ── 11b · GRUPOS MUSICALES ───────────────────────────────────────────── */
   musicGroups: {
     title: 'Grupos musicales',
     intro: 'La recepción se vivirá al ritmo de:',
@@ -195,7 +171,7 @@ itinerary: {
       {
         name: 'Jean Paul',
         detail: 'Y PASION PROHIBIDA',
-        video: { src: '/video/grupo.mp4' }, //, poster: '/images/9.jpg'
+        video: { src: '/video/grupo.mp4', poster: '/images/9.jpg' },
         photo: null,
       },
       {
@@ -204,7 +180,7 @@ itinerary: {
         video: null,
         photo: { src: '/images/alma.jpg', alt: 'El segundo grupo musical en escena' },
       },
-    ],
+    ] as BMusicGroup[],
   },
 
   /* ── 12 · REGALOS ─────────────────────────────────────────────────────── */
@@ -221,7 +197,6 @@ itinerary: {
     transfer: {
       title: 'Transferencia',
       text: 'Para tu comodidad hemos creado un código Qr. para recibir los regalos.',
-      /** Imagen real del QR del usuario. Vacío ⇒ QR demo dibujado en SVG. */
       qrImage: '',
     },
   },
@@ -237,7 +212,6 @@ itinerary: {
     title: 'Subir Fotos',
     note: 'Presiona el botón para subir o enviarnos las fotos cuando creas que es el mejor momento de la boda.',
     buttonLabel: 'Tomar foto',
-    /** enlace del gestor de fotos del evento (weduploader u otro). */
     link: 'https://weduploader.com/upload/E8rZ4Pdtp1GSSe1V',
   },
 
@@ -245,25 +219,22 @@ itinerary: {
   rsvp: {
     title: 'Confirmación de\nAsistencia',
     hint: 'Presiona el círculo para confirmar',
-    //deadline: 'Apreciaríamos mucho su confirmación antes del 15 de octubre.',
     doubtTitle: '¿Tienes alguna duda?',
     writeLabel: 'Escríbenos',
-    /** El círculo abre el formulario de confirmación. */
     formUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSettPUUB6qLpsdD6KQ_9IdTaNqDXSfKDm-ZQj4_w7E0-z43mQ/viewform?usp=dialog',
-    /** Botones de WhatsApp por invitado (grito personalizado por link). */
     guests: [
       { name: '¡Hola Alejandro!', href: 'https://wa.link/1p3ozl' },
       { name: '¡Hola Margot!', href: 'https://wa.link/ixg03e' },
     ],
     background: '/images/11.jpg',
     photoAlt: 'Los novios frente a la piedra tallada',
+    deadline: 'Confirmar hasta el 10 de noviembre de 2026',
   },
 
   /* ── 16 · ÁLBUM + COLLAGE ─────────────────────────────────────────────── */
   album: {
     title: 'Álbum de Fotos',
-    /** Fotos del carrusel-polaroid (máximo libre). */
     photos: ['/images/15.jpg', '/images/4.jpg', '/images/9.jpg', '/images/11.jpg'],
     collage: [
       { src: '/images/11.jpg', alt: 'Collage 1' },
@@ -277,11 +248,10 @@ itinerary: {
 
   /* ── 17 · PIE ─────────────────────────────────────────────────────────── */
   footer: {
-    /** Línea frontal encima del sello (opcional). */
     headline: '¿Te gustaría una invitación para tu evento?',
     contactLabel: 'Contáctanos',
     contactHref: 'https://wa.link/gvhorg',
-    brandName: 'Tu Estudio',
+    brandName: 'Rovelbots',
     brandLine: 'Invitaciones digitales',
   },
 }

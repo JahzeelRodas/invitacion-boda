@@ -59,9 +59,7 @@ export function BRsvp() {
           </div>
         </Reveal>
 
-        <Reveal delay={140}>
-          <p className="mx-auto mt-10 max-w-[360px] font-bQuatt text-[20px] leading-[1.5] text-white sm:text-[23px]">{rsvp.deadline}</p>
-        </Reveal>
+
 
         <Reveal delay={180}>
           <p className="mt-10 font-bCardo text-[34px] text-white sm:text-[40px]">{rsvp.doubtTitle}</p>

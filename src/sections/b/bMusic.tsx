@@ -42,7 +42,7 @@ export function BMusicGroups() {
                   <video
                     controls
                     preload="metadata"
-                    poster={group.video.poster}
+                    poster={group.video?.poster}
                     src={group.video.src}
                     className="aspect-video w-full rounded-[14px] bg-[#2C3A47] object-cover"
                   />

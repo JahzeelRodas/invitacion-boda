@@ -1,7 +1,7 @@
 import { designB } from '../../config/designB'
 import { WaveBand } from '../../components/decor/bWaves'
 import { BrideBadge, GroomBadge, IChurch, IRunway, IDance, IDinner, IGlasses, IBouquet, HeartFill } from '../../components/decor/bIcons'
-import { Reveal, ScriptTitle, TintedPhoto } from './bShared'
+import { Reveal, ScriptTitle } from './bShared'
 
 /* ════════════════════════════════════════════════════════════════════════════
    10 · CÓDIGO DE VESTIMENTA — bustos en círculos + indicación formal.
