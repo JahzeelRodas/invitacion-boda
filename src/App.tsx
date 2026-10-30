@@ -1,88 +1,57 @@
-import { useEffect, useRef, useState } from 'react'
-import { wedding } from './config/wedding'
-import { MusicProvider, useMusic } from './components/audio/MusicProvider'
-import MusicPlayer from './components/audio/MusicPlayer'
-import ScrollProgress from './components/layout/ScrollProgress'
-import InvitationOpening from './sections/InvitationOpening'
-import HeroSection from './sections/HeroSection'
-import OurStorySection from './sections/OurStorySection'
-import GallerySection from './sections/GallerySection'
-import CountdownSection from './sections/CountdownSection'
-import EventDetailsSection from './sections/EventDetailsSection'
-import DressCodeSection from './sections/DressCodeSection'
-import MusicBandSection from './sections/MusicBandSection'
-import RSVPSection from './sections/RSVPSection'
-import ClosingSection from './sections/ClosingSection'
+import { useEffect, useState } from 'react'
+import DesignA from './DesignA'
+import DesignB from './DesignB'
+import DesignPicker from './pages/DesignPicker'
 
-function Shell() {
-  const [opened, setOpened] = useState(false)
-  const { play } = useMusic()
-  const mainRef = useRef<HTMLElement>(null)
+/* ════════════════════════════════════════════════════════════════════════════
+   APP — página principal de selección + los dos modelos.
+   ────────────────────────────────────────────────────────────────────────────
+   Rutas por hash (funciona con el botón atrás y así WhatsApp comparte tal cual):
+     /            → selector de modelos
+     #/modelo-1   → diseño «minimalismo azul profundo»
+     #/modelo-2   → diseño «modelo elegante 2026»
+   Se recuerda la selección del visitante en localStorage para volver
+   directo a su invitación a la próxima visita.
+   ══════════════════════════════════════════════════════════════════════════ */
 
-  useEffect(() => {
-    const main = mainRef.current
-    if (main) main.inert = !opened
-    document.documentElement.style.overflow = opened ? '' : 'hidden'
-    return () => {
-      document.documentElement.style.overflow = ''
-    }
-  }, [opened])
+type Route = 'picker' | 'a' | 'b'
 
-  // Se llama en el instante del toque del usuario: la música arranca dentro
-  // del contexto de gesto (evita bloqueos de autoplay) y la portada
-  // comienza su transición bajo el sobre que aún se cierra.
-  const handleOpen = () => {
-    setOpened(true)
-    play()
-  }
+const STORAGE_KEY = 'invitacion:modelo'
 
-  return (
-    <>
-      <a
-        href="#historia"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:border focus:border-electric focus:bg-silk focus:px-4 focus:py-2 focus:text-xs focus:uppercase focus:tracking-[0.2em]"
-      >
-        Saltar al contenido
-      </a>
-
-      <ScrollProgress />
-
-      <InvitationOpening onOpen={handleOpen} />
-
-      <main ref={mainRef} id="contenido" aria-hidden={!opened}>
-        <HeroSection active={opened} />
-        <OurStorySection />
-        <GallerySection />
-        <CountdownSection />
-        <EventDetailsSection />
-        <DressCodeSection />
-        <MusicBandSection />
-        <RSVPSection />
-        <ClosingSection />
-
-        <footer className="border-t border-electric/20 bg-ivory px-6 py-10 text-center">
-          <p className="font-script text-2xl text-electric">{wedding.couple.monogram}</p>
-          {wedding.isDemoContent ? (
-            <p className="mt-4 text-[9px] font-medium uppercase tracking-[0.3em] text-mute/70">
-              Contenido de ejemplo — personaliza la invitación en src/config/wedding.ts
-            </p>
-          ) : (
-            <p className="mt-4 text-[9px] font-medium uppercase tracking-[0.3em] text-mute/70">
-              {wedding.date.displayShort} · {wedding.date.place}
-            </p>
-          )}
-        </footer>
-      </main>
-
-      <MusicPlayer visible={opened} />
-    </>
-  )
+function routeFromHash(hash: string): Route {
+  if (/#\/modelo-1/.test(hash)) return 'a'
+  if (/#\/modelo-2/.test(hash)) return 'b'
+  return 'picker'
 }
 
 export default function App() {
-  return (
-    <MusicProvider>
-      <Shell />
-    </MusicProvider>
-  )
+  const [route, setRoute] = useState<Route>(() => {
+    const remembered = window.localStorage.getItem(STORAGE_KEY)
+    const initial = routeFromHash(window.location.hash)
+    if (initial !== 'picker') return initial
+    if (remembered === 'a' || remembered === 'b') return remembered
+    return 'picker'
+  })
+
+  useEffect(() => {
+    const onHash = () => {
+      setRoute(routeFromHash(window.location.hash))
+    }
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
+
+  const choose = (option: 'a' | 'b') => {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, option)
+    } catch {
+      /* sin almacenamiento disponible */
+    }
+    window.location.hash = option === 'a' ? '#/modelo-1' : '#/modelo-2'
+    setRoute(option)
+  }
+
+  if (route === 'a') return <DesignA />
+  if (route === 'b') return <DesignB />
+  return <DesignPicker onChoose={choose} />
 }

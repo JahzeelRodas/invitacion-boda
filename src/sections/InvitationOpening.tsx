@@ -1,18 +1,39 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { wedding } from '../config/wedding'
+import { HeartShape, PetalFlower, FlowerBranch, GoldenOrnament } from '../components/decor/ornaments'
 
 interface InvitationOpeningProps {
   /** Se invoca en el instante del toque: inicia la música y la portada. */
   onOpen: () => void
 }
 
-const OPEN_TOTAL_MS = 1_450
-const REDUCED_TOTAL_MS = 650
+const OPEN_TOTAL_MS = 1_500
+const REDUCED_TOTAL_MS = 700
+
+/** Semilla determinista para que los pétalos no "brinquen" entre renders. */
+function rand(seed: number, min: number, max: number): number {
+  const x = Math.sin(seed * 127.1 + 311.7) * 43_758.5453
+  const frac = x - Math.floor(x)
+  return min + frac * (max - min)
+}
+
+interface Petal {
+  left: number
+  size: number
+  color: string
+  sway: number
+  duration: number
+  delay: number
+  flip: boolean
+}
+
+const PETAL_COLORS = ['#C9A24A', '#0B3A72', '#ECE4D8', '#3F6EA8', '#C9A24A', '#0B3A72', '#ECE4D8']
 
 /**
- * Pantalla inicial: sobre digital con sello de lacre que se abre
- * y revela la invitación con una transición cinematográfica breve.
+ * Pantalla inicial estilo "sobre digital": fondo azul profundo con pétalos
+ * cayendo y una tarjeta crema con sello de corazón, nombres, fecha y botón
+ * para abrir la invitación.
  */
 export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
   const reduce = useReducedMotion()
@@ -31,7 +52,7 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
     setPhase('opening')
 
     // La música y la portada se activan de inmediato (contexto de gesto del
-    // usuario) mientras el sobre termina de abrirse por encima.
+    // usuario) mientras la portada termina su desvanecimiento.
     onOpen()
 
     const timer = window.setTimeout(() => setPhase('done'), reduce ? REDUCED_TOTAL_MS : OPEN_TOTAL_MS)
@@ -45,147 +66,126 @@ export default function InvitationOpening({ onOpen }: InvitationOpeningProps) {
     }
   }
 
+  const petals = useMemo<Petal[]>(() => {
+    return Array.from({ length: 16 }, (_, i) => ({
+      left: rand(i, 3, 97),
+      size: rand(i * 3, 10, 24),
+      color: PETAL_COLORS[i % PETAL_COLORS.length],
+      sway: rand(i * 5, -30, 30),
+      duration: rand(i * 7, 16, 27),
+      delay: rand(i * 11, 0, 18),
+      flip: Math.abs(rand(i * 13, 0, 1)) > 0.5,
+    }))
+  }, [])
+
   if (phase === 'done') return null
+  const { couple, date, hero } = wedding
 
   return (
     <motion.div
-      className="paper-texture fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden bg-ivory px-6"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
+      style={{ background: 'linear-gradient(to bottom right, #073268, #00224C, #001531)' }}
       initial={false}
       animate={opening ? { opacity: 0 } : { opacity: 1 }}
-      transition={opening ? { duration: reduce ? 0.3 : 0.55, delay: reduce ? 0.15 : 0.85, ease: 'easeInOut' } : { duration: 0 }}
+      transition={opening ? { duration: reduce ? 0.4 : 0.75, delay: reduce ? 0.1 : 0.55, ease: 'easeInOut' } : { duration: 0 }}
       aria-hidden={opening}
     >
-      {/* Florones de esquina */}
-      <span aria-hidden="true" className="absolute left-5 top-5 h-10 w-10 border-l border-t border-electric/40" />
-      <span aria-hidden="true" className="absolute right-5 top-5 h-10 w-10 border-r border-t border-electric/40" />
-      <span aria-hidden="true" className="absolute bottom-5 left-5 h-10 w-10 border-b border-l border-electric/40" />
-      <span aria-hidden="true" className="absolute bottom-5 right-5 h-10 w-10 border-b border-r border-electric/40" />
-
-      <motion.p
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: opening ? 0 : 1, y: opening ? 0 : 8 }}
-        transition={{ duration: 0.8, delay: opening ? 0 : 0.15 }}
-        className="mb-2 text-[10px] font-medium uppercase tracking-[0.4em] text-mute"
-      >
-        Invitación digital
-      </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: opening ? 0 : 1 }}
-        transition={{ duration: 0.8, delay: opening ? 0 : 0.3 }}
-        className="mb-10 font-script text-3xl text-electric sm:text-4xl"
-      >
-        {wedding.phrases.opening}
-      </motion.p>
-
-      {/* ── Sobre ──────────────────────────────────────────────────────── */}
-      <div
-        role="button"
-        tabIndex={opening ? -1 : 0}
-        aria-label="Abrir invitación"
-        onClick={open}
-        onKeyDown={handleKeyDown}
-        className="relative h-[220px] w-[min(86vw,360px)] cursor-pointer outline-none sm:h-[250px]"
-      >
-        {/* Tarjeta interior */}
-        <motion.div
-          className="absolute left-1/2 top-1/2 w-[86%] border border-electric/35 bg-silk px-6 py-8 text-center shadow-[0_12px_44px_rgba(41,39,35,0.12)]"
-          style={{ x: '-50%', y: '-50%' }}
-          initial={false}
-          animate={
-            reduce
-              ? { opacity: opening ? 1 : 1 }
-              : { x: '-50%', y: '-52%', scale: opening ? 1.02 : 0.96 }
-          }
-          transition={{ duration: 0.6, delay: reduce ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div aria-hidden="true" className="pointer-events-none absolute inset-2 border border-electric/20" />
-          <p className="font-script text-2xl text-electric">{wedding.couple.monogram}</p>
-          <p className="mt-3 font-serif text-[1.35rem] font-medium leading-tight text-ink sm:text-2xl">
-            {wedding.couple.brideName} &amp; {wedding.couple.groomName}
-          </p>
-          <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.32em] text-mute">
-            {wedding.date.displayShort}
-          </p>
-        </motion.div>
-
-        {/* Mitad superior del sobre */}
-        <motion.div
-          className="absolute inset-x-0 top-0 h-1/2 border border-electric/40 bg-gradient-to-b from-[#F1F4FB] to-[#E2E8F5]"
-          initial={false}
-          animate={reduce ? { opacity: opening ? 0 : 1 } : { y: opening ? '-115%' : 0, opacity: opening ? 0 : 1 }}
-          transition={
-            reduce
-              ? { duration: 0.3 }
-              : { y: { duration: 0.65, delay: 0.25, ease: [0.65, 0, 0.35, 1] }, opacity: { duration: 0.3, delay: 0.75 } }
-          }
-        />
-
-        {/* Mitad inferior del sobre */}
-        <motion.div
-          className="absolute inset-x-0 bottom-0 h-1/2 border border-electric/40 bg-gradient-to-b from-[#EAEFF8] to-[#DDE4F2]"
-          initial={false}
-          animate={reduce ? { opacity: opening ? 0 : 1 } : { y: opening ? '115%' : 0, opacity: opening ? 0 : 1 }}
-          transition={
-            reduce
-              ? { duration: 0.3 }
-              : { y: { duration: 0.65, delay: 0.25, ease: [0.65, 0, 0.35, 1] }, opacity: { duration: 0.3, delay: 0.75 } }
-          }
-        />
-
-        {/* Costura central */}
-        <motion.div
-          aria-hidden="true"
-          className="absolute left-4 right-4 top-1/2 h-px bg-electric/50"
-          initial={false}
-          animate={{ opacity: opening ? 0 : 1 }}
-          transition={{ duration: 0.2 }}
-        />
-
-        {/* Sello de lacre */}
-        <motion.div
-          className="absolute left-1/2 top-1/2 flex h-16 w-16 items-center justify-center rounded-full sm:h-[70px] sm:w-[70px]"
-          style={{
-            x: '-50%',
-            y: '-50%',
-            background: 'radial-gradient(circle at 32% 30%, #5F84FF, #1F51FF 62%, #0F2FAE)',
-            boxShadow:
-              'inset 0 2px 6px rgba(255,252,247,0.4), inset 0 -3px 8px rgba(20,25,45,0.4), 0 2px 12px rgba(20,25,45,0.28)',
-          }}
-          initial={false}
-          animate={opening ? { scale: 1.16, opacity: 0 } : { scale: [1, 1.045, 1], opacity: 1 }}
-          transition={
-            opening
-              ? { duration: 0.45, ease: 'easeOut' }
-              : { scale: { duration: 2.6, repeat: Infinity, ease: 'easeInOut' }, opacity: { duration: 0.3 } }
-          }
-        >
-          <span className="font-serif text-lg font-medium text-ivory">{wedding.couple.initials}</span>
-        </motion.div>
+      {/* Pétalos/amuletos cayendo */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        {petals.map((petal, i) => (
+          <span
+            key={i}
+            className="absolute"
+            style={{
+              left: `${petal.left}%`,
+              top: '-6vh',
+              color: petal.color,
+              fontSize: `${petal.size}px`,
+              transform: petal.flip ? 'scaleX(-1)' : undefined,
+              // @ts-expect-error — variables CSS correctas, el tipo no las declara
+              '--sway': `${petal.sway}px`,
+              animation: petalFall(petal.duration, petal.delay),
+            }}
+          >
+            <PetalFlower />
+          </span>
+        ))}
       </div>
 
-      {/* Indicación */}
-      <motion.p
-        aria-hidden="true"
-        animate={{ opacity: opening ? 0 : undefined }}
-        transition={{ duration: 0.2 }}
-        className="animate-soft-pulse mt-10 text-[10px] font-medium uppercase tracking-[0.32em] text-mute"
-      >
-        {wedding.phrases.openingHint}
-      </motion.p>
+      {/* Contenedor de la tarjeta */}
+      <div className="relative z-10 w-[310px] sm:w-[340px]">
+        {/* Sello de lacre que pellizca la solapa */}
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-12 z-30 flex h-14 w-14 items-center justify-center rounded-full"
+          style={{
+            transform: 'translateX(-50%)',
+            background: 'radial-gradient(circle at 30% 30%, #033163, #000A2E)',
+            boxShadow: '0 4px 20px rgba(0,34,76,0.55), inset 0 2px 4px rgba(255,255,255,0.28)',
+            animation: opening ? undefined : 'sealPulse 2s ease-in-out infinite',
+          }}
+        >
+          <HeartShape className="h-7 w-7 text-mist" />
+        </div>
 
-      <motion.button
-        type="button"
-        onClick={open}
-        disabled={opening}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: opening ? 0 : 1 }}
-        transition={{ duration: 0.8, delay: opening ? 0 : 0.45 }}
-        className="btn-hairline mt-6"
-      >
-        Abrir invitación
-      </motion.button>
+        <motion.div
+          className="relative overflow-hidden rounded-lg border border-navy/15 bg-[rgba(247,245,238,0.97)] shadow-cover"
+          initial={false}
+          animate={opening ? { y: -72, scale: 1.03, opacity: 0.6 } : { y: 0, scale: 1, opacity: 1 }}
+          transition={{ duration: reduce ? 0.3 : 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {/* Ramas florales en las esquinas */}
+          <div className="pointer-events-none absolute inset-0">
+            <FlowerBranch className="absolute -left-8 -top-7 block w-36 rotate-[24deg] text-navy/35 opacity-80 md:w-44" />
+            <FlowerBranch className="absolute -bottom-7 -right-8 block w-36 -scale-x-100 -rotate-[24deg] text-navy/35 opacity-80 md:w-44" />
+            <div className="paper-noise absolute inset-0 opacity-60" />
+          </div>
+
+          <div className="relative z-10 px-6 pb-14 pt-24 text-center md:pt-20">
+            <h1 className="mb-2 flex flex-col items-center leading-tight">
+              <span className="block w-full text-center font-display text-3xl text-navy sm:text-4xl">
+                {couple.groomName}
+              </span>
+              <span className="block w-full text-center font-serif text-lg leading-none text-navy sm:text-xl">
+                &amp;
+              </span>
+              <span className="block w-full text-center font-display text-3xl text-navy sm:text-4xl">
+                {couple.brideName}
+              </span>
+            </h1>
+
+            {/* ornamento central */}
+            <div className="mb-2 flex items-center justify-center gap-3">
+              <div className="h-px w-10 bg-gradient-to-r from-transparent to-navy" />
+              <span className="text-sm text-navy/70">❦</span>
+              <div className="h-px w-10 bg-gradient-to-l from-transparent to-navy" />
+            </div>
+
+            <p className="mb-5 text-[18px] text-navy/70">{date.displayLong}</p>
+
+            <p className="mb-6 text-[18px] font-light text-navy/70">{hero.opening.title}</p>
+
+            <button
+              type="button"
+              onClick={open}
+              onKeyDown={handleKeyDown}
+              disabled={opening}
+              className="btn-navy group mx-auto flex w-fit cursor-pointer select-none items-center justify-center disabled:cursor-default"
+            >
+              <span>{hero.opening.button}</span>
+              <span aria-hidden="true" className="btn-shine" />
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Filete dorado bajo la tarjeta */}
+        <GoldenOrnament className="mx-auto mt-6 block w-24 opacity-80" />
+      </div>
     </motion.div>
   )
+}
+
+/** Construye la regla de animación de caída con las variables del pétalo. */
+function petalFall(duration: number, delay: number): string {
+  return `petalFall ${duration.toFixed(2)}s ease-in-out ${(-delay).toFixed(2)}s infinite`
 }

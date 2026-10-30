@@ -1,96 +1,92 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 import { wedding } from '../config/wedding'
+import { FlowerBranch, GoldenOrnament, EnvelopeBack, EnvelopeFlap } from '../components/decor/ornaments'
 
-interface HeroSectionProps {
-  /** true cuando el usuario ya abrió la invitación: dispara la entrada. */
-  active: boolean
-}
-
-/** Portada cinematográfica: fotografía con zoom lento y los nombres. */
-export default function HeroSection({ active }: HeroSectionProps) {
-  const reduce = useReducedMotion()
-  const baseDelay = reduce ? 0.1 : 1.15
+/**
+ * Encabezado: filete dorado + "Nuestra Boda", sobre digital con dos fotos
+ * flotantes tipo polaroid, ramal florales y nombres en letra display con
+ * el gran signo "&" caligráfico al fondo.
+ */
+export default function HeroSection() {
+  const { couple, hero } = wedding
+  const [mainPhoto, secondaryPhoto] = hero.photos
 
   return (
-    <section id="inicio" className="relative flex h-[100svh] min-h-[560px] items-end justify-center overflow-hidden bg-ink sm:items-center">
-      {/* Fotografía con zoom muy lento */}
-      <motion.img
-        src={wedding.hero.image}
-        alt={wedding.hero.alt}
-        decoding="async"
-        style={{ objectPosition: wedding.hero.position }}
-        className="absolute inset-0 h-full w-full object-cover"
-        initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 1.02 }}
-        animate={active ? (reduce ? { opacity: 1 } : { opacity: 1, scale: 1.12 }) : {}}
-        transition={
-          reduce
-            ? { duration: 0.8, delay: 0.2 }
-            : { opacity: { duration: 1.4, delay: 0.9, ease: 'easeOut' }, scale: { duration: 26, delay: 0.9, ease: 'linear' } }
-        }
-      />
-
-      {/* Veladuras para contraste y legibilidad */}
-      <div
+    <header className="relative z-10 flex flex-col items-center overflow-x-clip px-6 pb-14 pt-10 text-center">
+      {/* ramal detrás del sobre */}
+      <FlowerBranch
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(to_top,rgba(41,39,35,0.62),rgba(41,39,35,0.18)_46%,rgba(248,245,239,0.32))]"
+        className="pointer-events-none absolute left-[2%] top-[86px] w-[54%] -scale-x-100 text-navy/25 drop-shadow-[3px_4px_3px_rgba(0,0,0,0.3)]"
+        style={{ animation: 'dbFloat 6s ease-in-out 0.4s infinite' }}
       />
+      <GoldenOrnament className="relative z-10 mb-3 block w-[82px] md:w-[104px]" />
 
-      {/* Contenido */}
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center px-6 pb-24 text-center sm:pb-16">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={active ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, delay: baseDelay }}
-          className="text-[11px] font-medium uppercase tracking-[0.4em] text-azure [text-shadow:0_1px_18px_rgba(41,39,35,0.5)]"
-        >
-          {wedding.phrases.heroKicker}
-        </motion.p>
+      <p className="relative z-10 font-case text-[15px] font-semibold uppercase tracking-[0.14em] text-navy md:text-[18px]">
+        {hero.kicker}
+      </p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 18 }}
-          animate={active ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1.1, delay: baseDelay + 0.15 }}
-          className="mt-5 font-serif text-[clamp(3rem,11vw,6.5rem)] font-medium leading-[0.98] text-silk [text-shadow:0_2px_28px_rgba(41,39,35,0.45)]"
-        >
-          {wedding.couple.brideName}
-          <span className="my-1 block font-script text-[0.55em] leading-none text-azure">&amp;</span>
-          {wedding.couple.groomName}
-        </motion.h1>
+      {/* ── Sobre digital con fotos flotantes ──────────────────────────── */}
+      <div className="relative z-10 mt-[26%] w-[64.2%] max-w-[300px] md:max-w-[380px]">
+        <div className="relative aspect-[283/328]">
+          {/* sobre (parte trasera) */}
+          <EnvelopeBack className="pointer-events-none absolute inset-0 z-10 w-full" />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={active ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: baseDelay + 0.35 }}
-          className="mt-7 flex flex-col items-center gap-3"
-        >
-          <span aria-hidden="true" className="h-px w-16 bg-azure/70" />
-          <p className="text-xs font-medium uppercase tracking-[0.32em] text-silk/95 [text-shadow:0_1px_14px_rgba(41,39,35,0.55)]">
-            {wedding.date.displayLong} · {wedding.date.place}
-          </p>
-        </motion.div>
+          {/* polaroid 1 */}
+          <div
+            className="absolute left-[0.9%] top-[-15.7%] z-20 w-[67.4%]"
+            style={{ animation: 'dbFloat 6.5s ease-in-out 0.2s infinite', willChange: 'transform' }}
+          >
+            <div className="aspect-[191/255] rotate-[-9.93deg] border-[6px] border-white bg-white shadow-[2px_2px_4px_rgba(0,0,0,0.25)] md:border-8">
+              <img
+                src={mainPhoto.src}
+                alt={mainPhoto.alt}
+                className="h-full w-full object-cover"
+                style={{ objectPosition: mainPhoto.position }}
+              />
+            </div>
+          </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={active ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: baseDelay + 0.55 }}
-          className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-silk/90 [text-shadow:0_1px_16px_rgba(41,39,35,0.55)] sm:text-xl"
-        >
-          {wedding.phrases.heroQuote}
-        </motion.p>
+          {/* polaroid 2 */}
+          <div
+            className="absolute left-[31%] top-[8.8%] z-[21] w-[59.2%]"
+            style={{ animation: 'dbFloat 7s ease-in-out 0.8s infinite', willChange: 'transform' }}
+          >
+            <div className="aspect-[167/219] rotate-[17.26deg] border-[6px] border-white bg-white shadow-[2px_2px_4px_rgba(0,0,0,0.25)] md:border-8">
+              <img
+                src={secondaryPhoto.src}
+                alt={secondaryPhoto.alt}
+                className="h-full w-full object-cover"
+                style={{ objectPosition: secondaryPhoto.position }}
+              />
+            </div>
+          </div>
+
+          {/* solapa frontal del sobre */}
+          <EnvelopeFlap className="pointer-events-none absolute left-0 top-[42.7%] z-30 w-full" />
+
+          {/* rama flotante a la derecha */}
+          <span aria-hidden="true" className="pointer-events-none absolute left-[75.3%] top-[33.8%] z-[35] block w-[50.5%]">
+            <span className="block" style={{ animation: 'dbFloat 5s ease-in-out infinite', willChange: 'transform' }}>
+              <FlowerBranch className="block w-full text-navy/40 drop-shadow-[3px_4px_3px_rgba(0,0,0,0.3)]" />
+            </span>
+          </span>
+        </div>
       </div>
 
-      {/* Indicador de scroll */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={active ? { opacity: 1 } : {}}
-        transition={{ duration: 1, delay: baseDelay + 0.9 }}
-        aria-hidden="true"
-        className="absolute bottom-7 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1.5 text-silk/85"
-      >
-        <span className="text-[9px] font-medium uppercase tracking-[0.38em]">Desliza</span>
-        <ChevronDown size={16} strokeWidth={1.5} className="animate-drift" />
-      </motion.div>
-    </section>
+      {/* ── Nombres con el gran "&" ─────────────────────────────────────── */}
+      <div className="relative z-10 mt-[20%] flex flex-col items-center gap-[19px]">
+        <p className="font-display text-[clamp(36px,10.5vw,45px)] uppercase leading-none text-navy md:text-[56px]">
+          {couple.groomName}
+        </p>
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-[37%] -translate-y-1/2 font-script text-[100px] leading-none text-navy/15 md:text-[128px]"
+        >
+          &amp;
+        </span>
+        <p className="font-display text-[clamp(36px,10.5vw,45px)] uppercase leading-none text-navy md:text-[56px]">
+          {couple.brideName}
+        </p>
+      </div>
+    </header>
   )
 }

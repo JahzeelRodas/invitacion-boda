@@ -22,17 +22,16 @@
   }
 
   body {
-    @apply bg-ivory font-sans text-ink antialiased;
+    @apply bg-cream font-serif text-navy antialiased;
     overflow-x: clip;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.11 0 0 0 0 0.14 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   ::selection {
-    background: rgba(31, 81, 255, 0.16);
+    background: rgba(201, 162, 74, 0.28);
   }
 
   :focus-visible {
-    outline: 1px solid #1f51ff;
+    outline: 1px solid #c9a24a;
     outline-offset: 3px;
   }
 
@@ -43,36 +42,220 @@
 }
 
 @layer components {
-  /* Botón editorial con filete dorado */
-  .btn-hairline {
-    @apply inline-flex items-center justify-center gap-2 border border-electric/60 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-ink transition-colors duration-300 hover:bg-electric/10;
+  /* ── Textura de papel (grano tenue en multiply, sobre tarjetas y fondo) ── */
+  .paper-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='333' height='500'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9 0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.15 0 0 0 0 0.18 0 0 0 0 0.25 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='333' height='500' filter='url(%23p)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 333px 500px;
+    mix-blend-mode: multiply;
   }
 
-  .btn-hairline--light {
-    @apply inline-flex items-center justify-center gap-2 border border-azure/70 bg-transparent px-7 py-3 text-[11px] font-medium uppercase tracking-[0.28em] text-silk transition-colors duration-300 hover:bg-azure/15;
+  /* Grano interno para tarjetas azul marino (más claro, sin oscurecer). */
+  .paper-noise--dark {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='333' height='500'%3E%3Cfilter id='q'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9 0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.92 0 0 0 0 0.89 0 0 0 0 0.84 0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='333' height='500' filter='url(%23q)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 333px 500px;
+    mix-blend-mode: overlay;
   }
 
-  /* Campos de formulario estilo papelería */
-  .field-input {
-    @apply w-full border-b border-electric/40 bg-transparent py-2.5 text-[15px] text-ink placeholder:text-mute/50 focus:border-electric focus:outline-none;
+  /* Botón azul de la portada */
+  .btn-navy {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-navy px-8 py-2.5 text-lg font-semibold text-mist shadow-[0_4px_14px_rgba(0,34,76,0.35)] no-underline;
   }
 
-  .field-label {
-    @apply block text-[10px] font-medium uppercase tracking-[0.3em] text-mute;
+  .btn-navy--sm {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-navy px-7 py-1.5 text-[13px] uppercase tracking-wide text-mist;
   }
 
-  /* Zoom sutil de galería solo en dispositivos con puntero */
-  .img-zoom {
-    will-change: transform;
+  /* Reflejo que barre los botones */
+  .btn-shine {
+    @apply pointer-events-none absolute top-0 h-full w-8;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shine 3s ease-in-out infinite;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .img-zoom {
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .gallery-item:hover .img-zoom,
-    .gallery-item:focus-visible .img-zoom {
-      transform: scale(1.045);
-    }
+  /* Campos del libro de visitas */
+  .field-navy {
+    @apply w-full rounded-lg border border-navy px-4 py-3 text-sm text-navy placeholder:text-navy/40 focus:outline-none bg-transparent;
   }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ANIMACIONES — declaradas en CSS puro para poder usarlas con
+   `style={{ animation: 'dbFloat 6s …' }}` y duraciones aleatorias.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Flotación suave de flores y polaroids */
+@keyframes dbFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Caída de pétalos en la portada, con balanceo horizontal */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-8vh) translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(108vh) translateX(var(--sway, 12px)) rotate(200deg);
+  }
+}
+
+/* Pulso del sello de lacre */
+@keyframes sealPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.07);
+  }
+}
+
+/* Destello de los botones */
+@keyframes shine {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(320%);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(320%);
+    opacity: 0;
+  }
+}
+
+/* Caja de regalos flotando */
+@keyframes giftBob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.4deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.6deg);
+  }
+}
+
+/* Brillos alrededor de la caja */
+@keyframes giftSparkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* Confeti que brota al abrir la caja */
+@keyframes confettiOut {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx, 0px), var(--dy, 240px)) rotate(var(--rot, 260deg));
+    opacity: 0;
+  }
+}
+
+/* Indicación "toca para abrir" */
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   DISEÑO B («modelo elegante 2026») — revelado, toques y flotación.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.b-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 0.75, 0.35, 0.9),
+    transform 0.75s cubic-bezier(0.22, 0.75, 0.35, 0.9);
+  will-change: opacity, transform;
+}
+
+.b-reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .b-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Floración brusca de la etiqueta "pases" */
+@keyframes bFloatIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.b-float-in {
+  animation: bFloatIn 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+/* Aurora alrededor del botón corazón cuando suena la canción */
+@keyframes bPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(166, 170, 121, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(166, 170, 121, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(166, 170, 121, 0);
+  }
+}
+
+.animate-bPulse {
+  animation: bPulse 1.6s ease-out infinite;
+}
+
+/* Manita que indica "toca aquí" */
+@keyframes bTap {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.06);
+  }
+}
+
+.animate-bTap {
+  animation: bTap 1.4s ease-in-out infinite;
 }

@@ -50,13 +50,13 @@ export default function Lightbox({ images, index, onClose, onNavigate }: Lightbo
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
       onClick={onClose}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4 backdrop-blur-sm sm:p-10"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-navy/90 p-4 backdrop-blur-sm sm:p-10"
     >
       <button
         type="button"
         onClick={onClose}
         aria-label="Cerrar galería"
-        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-silk/30 text-silk transition-colors hover:bg-silk/10"
+        className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-mist/30 text-mist transition-colors hover:bg-mist/10"
       >
         <X size={18} strokeWidth={1.5} aria-hidden="true" />
       </button>
@@ -70,7 +70,7 @@ export default function Lightbox({ images, index, onClose, onNavigate }: Lightbo
               goPrev()
             }}
             aria-label="Fotografía anterior"
-            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-silk/30 text-silk transition-colors hover:bg-silk/10 sm:left-6"
+            className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-mist/30 text-mist transition-colors hover:bg-mist/10 sm:left-6"
           >
             <ChevronLeft size={20} strokeWidth={1.5} aria-hidden="true" />
           </button>
@@ -81,7 +81,7 @@ export default function Lightbox({ images, index, onClose, onNavigate }: Lightbo
               goNext()
             }}
             aria-label="Fotografía siguiente"
-            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-silk/30 text-silk transition-colors hover:bg-silk/10 sm:right-6"
+            className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-mist/30 text-mist transition-colors hover:bg-mist/10 sm:right-6"
           >
             <ChevronRight size={20} strokeWidth={1.5} aria-hidden="true" />
           </button>
@@ -102,8 +102,8 @@ export default function Lightbox({ images, index, onClose, onNavigate }: Lightbo
           className="max-h-[80vh] w-auto max-w-full rounded-sm object-contain shadow-2xl"
         />
         <figcaption className="mt-5 text-center">
-          <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-silk/85">{image.alt}</span>
-          <span className="mt-1 block text-[10px] tracking-[0.3em] text-silk/50">
+          <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-mist/85">{image.alt}</span>
+          <span className="mt-1 block text-[10px] tracking-[0.3em] text-mist/50">
             {index + 1} / {total}
           </span>
         </figcaption>
