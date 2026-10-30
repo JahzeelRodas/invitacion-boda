@@ -128,8 +128,8 @@ export default function DesignPicker({ onChoose }: PickerProps) {
         </div>
 
         <p className="mt-8 text-center text-[11px] text-cream/35">
-          Cambia de modelo desde el enlace <span className="font-sans">#/modelo-1 · #/modelo-2</span> o vuelve aquí con el
-          botón atrás del navegador.
+          Vuelve a esta página con el enlace <span className="font-sans">#/modelos</span> o con el botón atrás del
+          navegador. El modelo 2 se muestra por defecto en la página principal.
         </p>
       </div>
     </div>

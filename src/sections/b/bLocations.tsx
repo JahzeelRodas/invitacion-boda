@@ -30,7 +30,8 @@ export function BQuoteLocation() {
         <div aria-hidden="true" className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-bPaper/90 to-transparent" />
       </section>
 
-      <WaveBand id="b-ubicacion" band="navy" topWave bottomWave>
+      {/* 🟢 Agregamos -mt-6 sm:-mt-10 y relative z-20 para que la banda azul suba y cubra el espacio blanco de la foto */}
+      <WaveBand id="b-ubicacion" band="navy" topWave bottomWave className="relative z-25 -mt-6 sm:-mt-10">
         <ScriptTitle text={locations.sectionTitle} />
       </WaveBand>
 

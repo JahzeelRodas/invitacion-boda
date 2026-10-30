@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react'
 
 /* ════════════════════════════════════════════════════════════════════════════
-   BANDAS ONDULADAS del diseño B.
-   Ondas propias dibujadas en SVG: una base oliva (filete) y la banda
-   pizarra encima, con dos amplitudes para que se sientan hechas a mano.
-   ══════════════════════════════════════════════════════════════════════════ */
+    BANDAS ONDULADAS del diseño B.
+    Ondas propias dibujadas en SVG: una base oliva (filete) y la banda
+    pizarra encima, con dos amplitudes para que se sientan hechas a mano.
+    ══════════════════════════════════════════════════════════════════════════ */
 
 type WaveKind = 'navy' | 'sage' | 'cream' | 'red' | 'photoFrost'
 
@@ -63,8 +63,6 @@ const WAVE_SOFT =
 
 /**
  * Banda con fondo plano + ondas arriba/abajo (mensajes, títulos).
- * Ejemplo de uso:
- *   <WaveBandTop><div class="bg-bNavy">…</div></WaveBandTop>
  */
 export function WaveBand({
   children,
@@ -95,10 +93,36 @@ export function WaveOnly({
   return <WaveEdge side={side} fillTop={color} />
 }
 
+/** 
+ * NUEVO: Onda decorativa para superponerse de forma absoluta sobre la fotografía 
+ * y eliminar el espacio blanco intermedio.
+ */
+export function WaveOverPhoto({
+  color = '#293C4B',
+  flip = false,
+  className,
+}: {
+  color?: string
+  flip?: boolean
+  className?: string
+}) {
+  return (
+    <div className={`absolute top-0 left-0 w-full z-20 pointer-events-none leading-none ${className ?? ''}`}>
+      <svg
+        viewBox="0 0 1440 74"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        className={`block h-[34px] w-full sm:h-[46px] ${flip ? 'rotate-180' : ''}`}
+      >
+        <path d={WAVE_MAIN} fill={color} />
+      </svg>
+    </div>
+  )
+}
+
 /* ════════════════════════════════════════════════════════════════════════════
-   GLIFOS con corazón y cursor (algunos botones del original llevan una
-   manita "tocando" el botón). Se recrean aparte en bIcons.
-   ══════════════════════════════════════════════════════════════════════════ */
+    GLIFOS con corazón y cursor.
+    ══════════════════════════════════════════════════════════════════════════ */
 
 /** Botón rectangular asimétrico estilo "hoja" del original. */
 export function LeafButton({

@@ -1,12 +1,15 @@
 import { designB } from '../../config/designB'
 import { WaveBand } from '../../components/decor/bWaves'
+import { useSong } from '../../components/audio/SongProvider'
 import { Reveal } from './bShared'
 
 /* ════════════════════════════════════════════════════════════════════════════
    11b · GRUPOS MUSICALES — el material de cada grupo (video y/o foto) en el
    ritmo del modelo: banda azul con guion + tarjetas con filete oliva.
    Config: `designB.musicGroups`.
-   ══════════════════════════════════════════════════════════════════════════ */
+   Al iniciar un video se pausa el tema musical y al terminar el video
+   vuelve a sonar la canción.
+  ══════════════════════════════════════════════════════════════════════════ */
 
 /** Pentagrama dibujado a mano (icono junto a los nombres). */
 function MusicNote({ className, stroke = '#98A26B' }: { className?: string; stroke?: string }) {
@@ -21,11 +24,23 @@ function MusicNote({ className, stroke = '#98A26B' }: { className?: string; stro
 
 export function BMusicGroups() {
   const { musicGroups } = designB
+  const { play, pause } = useSong()
   if (!musicGroups.groups.length) return null
 
   return (
     <>
-      <WaveBand id="b-grupos" band="navy" topWave bottomWave>
+      {/* 
+        🟢 SOLUCIÓN APLICADA: 
+        Añadimos 'relative z-20 -mt-8 sm:-mt-12' para que la banda azul suba 
+        y su onda superior muerda y cubra el espacio blanco que quedaba arriba.
+      */}
+      <WaveBand 
+        id="b-grupos" 
+        band="navy" 
+        topWave 
+        bottomWave 
+        className="relative z-20 -mt-8 sm:-mt-12"
+      >
         <Reveal>
           <p className="mx-auto max-w-[430px] px-7 pb-12 pt-9 text-center font-bQuatt text-[20px] leading-[1.5] text-[#F1F1E7] sm:pb-14 sm:pt-11 sm:text-[23px]">
             {musicGroups.intro}
@@ -44,6 +59,8 @@ export function BMusicGroups() {
                     preload="metadata"
                     poster={group.video?.poster}
                     src={group.video.src}
+                    onPlay={pause}
+                    onEnded={play}
                     className="aspect-video w-full rounded-[14px] bg-[#2C3A47] object-cover"
                   />
                 ) : null}

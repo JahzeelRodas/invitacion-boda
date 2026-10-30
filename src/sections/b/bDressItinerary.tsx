@@ -32,7 +32,7 @@ export function BDressCode() {
 
 /* ════════════════════════════════════════════════════════════════════════════
    11 · ITINERARIO — foto con tinte pizarra, línea vertical central,
-        iconos de línea y textos alternados en cada lado.
+         iconos de línea y textos alternados en cada lado.
    ══════════════════════════════════════════════════════════════════════════ */
 
 const ICONS = {
@@ -44,16 +44,13 @@ const ICONS = {
   bouquet: IBouquet,
 }
 
-
-
-
 export function BItinerary() {
   const { itinerary } = designB
 
   return (
     <section
       id="b-itinerario"
-      className="relative overflow-hidden bg-[#24333E]"
+      className="relative bg-[#24333E] pb-16"
     >
       <div className="py-12 sm:py-16">
         <ScriptTitle text={itinerary.title} />
@@ -128,7 +125,22 @@ export function BItinerary() {
           })}
         </div>
       </div>
+
+      {/* 🟢 ONDA INTEGRADORA INFERIOR: Se coloca de forma absoluta abajo del itinerario 
+          para solaparse con la siguiente sección y eliminar cualquier espacio blanco. */}
+      <div className="absolute -bottom-[34px] left-0 w-full sm:-bottom-[46px] z-30 pointer-events-none leading-none">
+        <svg
+          viewBox="0 0 1440 74"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          className="block h-[34px] w-full sm:h-[46px]"
+        >
+          <path
+            d="M0,58 C90,30 190,16 320,26 C470,37 560,62 700,54 C850,45 930,12 1080,20 C1230,28 1320,52 1440,42 L1440,74 L0,74 Z"
+            fill="#293C4B"
+          />
+        </svg>
+      </div>
     </section>
   )
 }
-

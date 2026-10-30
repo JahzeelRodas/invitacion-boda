@@ -1,13 +1,18 @@
 import { wedding, type MusicGroup } from '../config/wedding'
+import { useMusic } from '../components/audio/MusicProvider'
 import { HeartShape } from '../components/decor/ornaments'
 
 /**
  * Grupos musicales: material de cada grupo (el video que compartió uno de
  * ellos y la fotografía del otro) encuadrado en el estilo del diseño A.
  * Se configura en `wedding.musicGroups` (src/config/wedding.ts).
+ * Al iniciar un video se pausa la música ambiental y al terminar el video
+ * vuelve a sonar.
  */
 
 function GroupMedia({ group }: { group: MusicGroup }) {
+  const { play, pause } = useMusic()
+
   return (
     <MediaCard>
       {group.video ? (
@@ -16,6 +21,8 @@ function GroupMedia({ group }: { group: MusicGroup }) {
           preload="metadata"
           poster={group.video.poster}
           src={group.video.src}
+          onPlay={pause}
+          onEnded={play}
           className="aspect-video w-full bg-abyss object-cover"
         />
       ) : null}

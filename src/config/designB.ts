@@ -101,14 +101,10 @@ export const designB = {
     godparents: [
       {
         label: 'Padrinos de religión',
-        names: ['Orlando Molina Peréz', 'Julieta Marlón Hinojosa'],
+        names: ['Dr. Benjamin Hugo Bolivar Morales', 'Dra. Janet Nieves Pablo de Bolivar'],
         icon: 'church' as const,
       },
-      {
-        label: 'Padrinos de civil',
-        names: ['Hector Martinez Vasco', 'Damaris Pilco Llusco'],
-        icon: 'rings' as const,
-      },
+      
     ],
   },
 
@@ -128,7 +124,7 @@ export const designB = {
       venueName: 'Catedral Metropolitana "Nuestra Señora de La Paz"',
       addressLines: ['Plaza Murillo'],
       mapsUrl:
-        'https://www.google.com/maps/place/Iglesia+de+la+Recoleta/@-17.3779533,-66.154731,730m/data=!3m2!1e3!4b1!4m6!3m5!1s0x93e3741aeab460b5:0x335b0c40ea737764!8m2!3d-17.3779533!4d-66.1521561!16s%2Fg%2F1tdkc4kd?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D',
+        'https://maps.app.goo.gl/umzpXg2Akg1d6tFd6',
       image: '/images/11.jpg',
       imageAlt: 'Fachada de la parroquia',
     },
@@ -137,7 +133,7 @@ export const designB = {
       time: '16:30 Hrs.',
       venueName: 'Salon de Eventos Golden Prime II',
       addressLines: ['Av. Bolivia entre calles 4 y 5, N°20 ', 'Zona Santiago II'],
-      mapsUrl: 'https://maps.app.goo.gl/CoC2H4FGx12XPbRN8',
+      mapsUrl: 'https://maps.app.goo.gl/KJc7Ghd4V89znymS6',
       image: '/images/9.jpg',
       imageAlt: 'Salón de eventos con pasillo rojo',
     },

@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react'
 import { designB } from '../../config/designB'
 import { WaveBand } from '../../components/decor/bWaves'
+import { useSong } from '../../components/audio/SongProvider'
 import { HeartsDoodle, HeartFill, PrevIcon, NextIcon } from '../../components/decor/bIcons'
 import { Reveal, TapHint } from './bShared'
 
@@ -57,48 +57,16 @@ export function BHero() {
 
 function SongStrip() {
   const { song } = designB
-  const [playing, setPlaying] = useState(false)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const { playing, toggle } = useSong()
 
   const hintParts = song.hint.split('[]')
 
-  useEffect(() => {
-    const audio = audioRef.current
-
-    if (!audio) return
-
-    const handleEnded = () => setPlaying(false)
-    const handlePause = () => setPlaying(false)
-    const handlePlay = () => setPlaying(true)
-
-    audio.addEventListener('ended', handleEnded)
-    audio.addEventListener('pause', handlePause)
-    audio.addEventListener('play', handlePlay)
-
-    return () => {
-      audio.removeEventListener('ended', handleEnded)
-      audio.removeEventListener('pause', handlePause)
-      audio.removeEventListener('play', handlePlay)
-    }
-  }, [])
-
-  const press = async () => {
+  // El control del <audio> vive en <SongProvider>; aquí solo se consulta
+  // el estado (playing) y se alterna reproducción/pausa (toggle), así las
+  // pausas desde los videos de los grupos se reflejan en este botón.
+  const press = () => {
     if (song.audioSrc) {
-      const audio = audioRef.current
-
-      if (!audio) return
-
-      try {
-        if (audio.paused) {
-          await audio.play()
-        } else {
-          audio.pause()
-        }
-      } catch (error) {
-        console.error('No se pudo reproducir la canción:', error)
-        setPlaying(false)
-      }
-
+      toggle()
       return
     }
 
@@ -125,16 +93,6 @@ function SongStrip() {
           className="mx-auto h-px w-3/5 bg-bWave/70"
         />
       </Reveal>
-
-      {song.audioSrc ? (
-        <audio
-          ref={audioRef}
-          src={song.audioSrc}
-          preload="none"
-          loop
-          controls={false}
-        />
-      ) : null}
 
       <Reveal delay={120}>
         <div

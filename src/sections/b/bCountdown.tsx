@@ -3,12 +3,12 @@ import { designB } from '../../config/designB'
 import { useCountdown, padTwo } from '../../hooks/useCountdown'
 import { zonedTimeToUtc } from '../../utils/timezone'
 import { CalendarHeart, HeartsDoodle, TagIcon } from '../../components/decor/bIcons'
-import { WaveBand } from '../../components/decor/bWaves'
+import { WaveBand, WaveOverPhoto } from '../../components/decor/bWaves'
 import { Reveal, TintedPhoto, TapHint } from './bShared'
 
 /* ════════════════════════════════════════════════════════════════════════════
    4 · FECHA — foto con tinte + fecha larga + ¡NOS CASAMOS! + cuenta regresiva
-        + botón para agendar.
+       + botón para agendar.
    ══════════════════════════════════════════════════════════════════════════ */
 
 export function BDateCountdown() {
@@ -34,10 +34,14 @@ export function BDateCountdown() {
       id="b-fecha"
       src={date.countdownPhoto}
       alt={date.photoAlt}
-      className="b-fecha h-[590px] sm:h-[660px]"
+      /* 🟢 Añadimos un margen superior negativo (-mt-6 sm:-mt-10) para que la foto suba más */
+      className="b-fecha relative -mt-6 h-[590px] overflow-visible sm:-mt-10 sm:h-[660px]"
       overClass="bg-[#394C5B]/55"
       position="center 32%"
     >
+      {/* 🟢 Aumentamos ligeramente el desplazamiento negativo de la onda para solapar mejor */}
+      <WaveOverPhoto color="#293C4B" flip={true} className="-top-[42px] sm:-top-[58px]" />
+
       {/* veladuras para que el texto respire arriba y abajo */}
       <div aria-hidden="true" className="absolute inset-x-0 top-0 z-0 h-24 bg-gradient-to-b from-[#24333E]/75 to-transparent" />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-[#24333E]/75 to-transparent" />

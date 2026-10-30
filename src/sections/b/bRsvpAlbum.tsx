@@ -59,8 +59,6 @@ export function BRsvp() {
           </div>
         </Reveal>
 
-
-
         <Reveal delay={180}>
           <p className="mt-10 font-bCardo text-[34px] text-white sm:text-[40px]">{rsvp.doubtTitle}</p>
           <p className="mt-1 font-serif text-[21px] text-white/95 sm:text-[24px]">{rsvp.writeLabel}</p>
@@ -100,7 +98,12 @@ export function BAlbum() {
 
   return (
     <>
-      <WaveBand id="b-album" band="navy" topWave bottomWave>
+      {/* 
+        🟢 SOLUCIÓN APLICADA: 
+        Añadimos 'relative z-20 -mt-8 sm:-mt-12' en WaveBand para que la onda superior 
+        suba, muerda y cubra el espacio blanco que quedaba debajo de la confirmación.
+      */}
+      <WaveBand id="b-album" band="navy" topWave bottomWave className="relative z-20 -mt-8 sm:-mt-12">
         <ScriptTitle text={album.title} />
       </WaveBand>
 
