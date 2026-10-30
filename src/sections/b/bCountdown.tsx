@@ -65,20 +65,7 @@ export function BDateCountdown() {
           </Reveal>
         </div>
 
-        <Reveal delay={120}>
-          <div className="relative">
-            <a
-              href={date.gcalUrls[0]}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 rounded-[24px] rounded-br-[46px] bg-white/85 px-6 py-3 font-bQuatt text-[19px] text-[#31495A] shadow-[0_8px_24px_rgba(20,35,45,0.28)] transition-colors hover:bg-white sm:text-[21px]"
-            >
-              <CalendarHeart className="h-9 w-9" stroke="#31495A" />
-              {date.calendarLabel}
-            </a>
-            <TapHint className="absolute -right-12 bottom-0 hidden sm:inline-block" stroke="#fff" />
-          </div>
-        </Reveal>
+
       </div>
     </TintedPhoto>
   )

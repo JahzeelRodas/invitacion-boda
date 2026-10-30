@@ -129,7 +129,7 @@ export const wedding = {
       entranceLabel: 'Entrada de los novios',
       entranceTime: '22:30',
       countdownLabel: 'Cuenta Regresiva',
-      calendarLinkLabel: 'Añadir al Calendario',
+      //calendarLinkLabel: 'Añadir al Calendario',
       rsvpLabel: 'CONFIRMAR ASISTENCIA',
     },
     /* Cronología desplegada (iconos opcionales). */

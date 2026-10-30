@@ -78,7 +78,7 @@ export const designB = {
     ],
     countdownPhoto: '/images/9.jpg',
     photoAlt: 'Los novios entre ruinas de piedra',
-    calendarLabel: 'Añadir al Calendario',
+    //calendarLabel: 'Añadir al Calendario',
   },
 
   /* ── 5 · PASES ────────────────────────────────────────────────────────── */
