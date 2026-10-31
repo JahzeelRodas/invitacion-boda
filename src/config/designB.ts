@@ -167,7 +167,7 @@ export const designB = {
       {
         name: 'Jean Paul',
         detail: 'Y PASION PROHIBIDA',
-        video: { src: '/video/grupo.mp4', poster: '/images/9.jpg' },
+        video: { src: '/video/grupo.mp4', poster: '/images/jeanpaul.jpg' },
         photo: null,
       },
       {
@@ -237,8 +237,8 @@ export const designB = {
       { src: '/images/4.jpg', alt: 'Collage 2' },
       { src: '/images/15.jpg', alt: 'Collage 3' },
       { src: '/images/9.jpg', alt: 'Collage 4' },
-      { src: '/images/15.jpg', alt: 'Collage 5' },
-      { src: '/images/11.jpg', alt: 'Collage 6' },
+      { src: '/images/17.jpg', alt: 'Collage 5' },
+      { src: '/images/5.jpg', alt: 'Collage 6' },
     ],
   },
 
