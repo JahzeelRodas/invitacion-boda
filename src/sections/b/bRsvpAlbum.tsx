@@ -1,87 +1,35 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { designB } from '../../config/designB'
 import { WaveBand } from '../../components/decor/bWaves'
-import { HeartsDoodle, PhoneBubble, BrandSeal } from '../../components/decor/bIcons'
+import { BrandSeal } from '../../components/decor/bIcons'
 import { Reveal, ScriptTitle, TintedPhoto, TapHint } from './bShared'
 
 /* ════════════════════════════════════════════════════════════════════════════
-   15 · CONFIRMACIÓN — círculo con monograma que abre el formulario + los
-        botones de WhatsApp por invitado.
+   15 · CONFIRMACIÓN / SECCIÓN CENTRAL — espacio reservado y frase inspiradora.
    ══════════════════════════════════════════════════════════════════════════ */
 
 export function BRsvp() {
-  const { rsvp, hero } = designB
-  const pressed = useRef(false)
-
-  const openForm = () => {
-    if (pressed.current) return
-    pressed.current = true
-    window.setTimeout(() => {
-      pressed.current = false
-    }, 400)
-    if (rsvp.formUrl) {
-      window.open(rsvp.formUrl, '_blank', 'noopener')
-    }
-  }
-
   return (
     <TintedPhoto
       id="b-confirmacion"
-      src={rsvp.background}
-      alt={rsvp.photoAlt}
+      src={designB.rsvp.background}
+      alt={designB.rsvp.photoAlt}
       overClass="bg-[#41525F]/75"
       position="center 38%"
     >
       <div className="px-5 pb-16 pt-12 text-center sm:px-8 sm:pb-20 sm:pt-14">
-        {/* Círculo principal */}
+        {/* Espacio reservado con la misma altura que ocupaba el círculo para no encoger la foto */}
+        <div aria-hidden="true" className="mx-auto h-[220px] w-[220px] sm:h-[250px] sm:w-[250px]" />
+
+        {/* Frase no bíblica destacada */}
         <Reveal>
-          <div className="relative mx-auto h-[290px] w-[290px] sm:h-[320px] sm:w-[320px]">
-            <button
-              type="button"
-              onClick={openForm}
-              aria-label={`${rsvp.hint}. Confirmar asistencia de ${hero.namesLine}`}
-              className="absolute inset-0 grid cursor-pointer place-items-center rounded-full bg-[#33495A]/75 backdrop-blur-[3px] transition-transform active:scale-[0.97]"
-            >
-              <span className="px-6">
-                <span className="block font-bParis text-[92px] leading-none text-white sm:text-[104px]">{hero.monogram}</span>
-                <span className="mx-auto mt-4 block max-w-[220px] font-bQuatt text-[18px] leading-[1.35] text-white/95 sm:text-[20px]">
-                  {rsvp.hint}
-                </span>
-              </span>
-            </button>
-            {/* anillo exterior fino */}
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -inset-[10px] rounded-full border-[1.5px] border-[#C9CFA8]/70"
-            />
-            <TapHint className="absolute -right-4 top-1/2" stroke="#fff" />
-            <HeartsDoodle className="absolute -bottom-2 left-1 w-10 opacity-90" />
+          <div className="mx-auto mt-6 max-w-[420px] px-4">
+            <p className="font-bCardo text-[26px] leading-[1.45] text-white sm:text-[32px]">
+              "El amor no se mira con los ojos, sino con el alma."
+            </p>
+
           </div>
         </Reveal>
-
-        <Reveal delay={180}>
-          <p className="mt-10 font-bCardo text-[34px] text-white sm:text-[40px]">{rsvp.doubtTitle}</p>
-          <p className="mt-1 font-serif text-[21px] text-white/95 sm:text-[24px]">{rsvp.writeLabel}</p>
-        </Reveal>
-
-        <div className="mx-auto mt-7 flex max-w-[340px] flex-col gap-4">
-          {rsvp.guests.map((guest, i) => (
-            <Reveal key={guest.name} delay={200 + i * 90}>
-              <div className="relative">
-                <a
-                  href={guest.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-4 rounded-[24px] bg-[#33495A]/60 px-6 py-3.5 backdrop-blur-[2px] transition-colors hover:bg-[#33495A]/80"
-                >
-                  <PhoneBubble className="h-11 w-11 shrink-0" />
-                  <span className="font-bCardo text-[27px] text-white sm:text-[30px]">{guest.name}</span>
-                </a>
-                <TapHint className="absolute -right-4 -bottom-4" stroke="#fff" />
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </TintedPhoto>
   )
@@ -98,11 +46,6 @@ export function BAlbum() {
 
   return (
     <>
-      {/* 
-        🟢 SOLUCIÓN APLICADA: 
-        Añadimos 'relative z-20 -mt-8 sm:-mt-12' en WaveBand para que la onda superior 
-        suba, muerda y cubra el espacio blanco que quedaba debajo de la confirmación.
-      */}
       <WaveBand id="b-album" band="navy" topWave bottomWave className="relative z-20 -mt-8 sm:-mt-12">
         <ScriptTitle text={album.title} />
       </WaveBand>
