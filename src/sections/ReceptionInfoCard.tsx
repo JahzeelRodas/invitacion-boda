@@ -113,7 +113,7 @@ export default function ReceptionInfoCard({ onOpenRsvp }: { onOpenRsvp: () => vo
             onClick={addToCalendar}
             className="inline-flex items-center justify-center gap-2 text-sm underline underline-offset-4 text-mist/90 transition-colors hover:text-mist"
           >
-            {receptionCard.calendarLinkLabel}
+
           </button>
         </div>
       </div>
