@@ -21,6 +21,8 @@ export interface BItineraryItem {
     | 'dinner'
     | 'glasses'
     | 'bouquet'
+    | 'cake'
+    | 'couple'
 }
 
 export interface BMusicGroup {
@@ -44,7 +46,7 @@ export const designB = {
     namesLine: 'Alejandro & Margot',
     monogram: 'AyM',
     dateShort: '21 . 11 . 26',
-    photo: '/images/principal.jpg',
+    photo: '/images/inicio.jpg',
     photoAlt: 'Los novios junto a la puerta azul',
   },
 
@@ -76,9 +78,24 @@ export const designB = {
       'https://calendar.app.google/xvUMzXYbACtGHo9a6',
       'https://calendar.app.google/CzMZgbgY5ekUPrYF7',
     ],
-    countdownPhoto: '/images/9.jpg',
+    countdownPhoto: '/images/principal.jpg',
     photoAlt: 'Los novios entre ruinas de piedra',
     //calendarLabel: 'Añadir al Calendario',
+  },
+
+  /* ── 4b · CALENDARIO DEL MES ─────────────────────────────────────────── */
+  /** Rejilla del mes del enlace; el día destacado se toma de date.day
+      (21) y se marca con un corazón. */
+  calendar: {
+    title: '¿Nuestra Fecha Especial?',
+    /** Año, mes (1 = enero … 12 = diciembre) y día del enlace destacado. */
+    year: 2026,
+    monthName: 'Noviembre',
+    month: 11,
+    day: 21,
+    /** Color del corazón que marca la fecha. */
+    heart: '#24333E',
+    note: 'Aparta este día en tu calendario. ¡Te esperamos!',
   },
 
   /* ── 5 · PASES ────────────────────────────────────────────────────────── */
@@ -111,7 +128,7 @@ export const designB = {
   /* ── 7 · FRASE SOBRE FOTO ─────────────────────────────────────────────── */
   quote: {
     text: '“Entre cada risa, cada lágrima y cada abrazo, fuimos tejiendo nuestra historia, marcada por el amor y complicidad. Hoy, todo lo vivido nos ha llevado a este momento, donde nuestros corazones se entrelazan para escribir juntos el resto de nuestra historia.”',
-    photo: '/images/15.jpg',
+    photo: '/images/9.jpg',
     photoAlt: 'Los novios mirando el valle',
   },
 
@@ -134,7 +151,7 @@ export const designB = {
       venueName: 'Salon de Eventos Golden Prime II',
       addressLines: ['Av. Bolivia entre calles 4 y 5, N°20 ', 'Zona Santiago II'],
       mapsUrl: 'https://maps.app.goo.gl/KJc7Ghd4V89znymS6',
-      image: '/images/9.jpg',
+      image: '/images/18.jpg',
       imageAlt: 'Salón de eventos con pasillo rojo',
     },
   },
@@ -153,9 +170,11 @@ export const designB = {
     photoAlt: 'Los novios bailando',
     items: [
       { time: '11:30 Hrs.', label: 'Ceremonia\nReligiosa', icon: 'church' },
-      { time: '16:30 Hrs.', label: 'Recepción\nSocial', icon: 'runway' },
+      { time: '16:00 Hrs.', label: 'Recepción\nSocial', icon: 'runway' },
       { time: '20:00 Hrs.', label: 'Cena', icon: 'dinner' },
-      { time: '21:00 Hrs.', label: 'Torta', icon: 'dance' },
+      { time: '21:30 Hrs.', label: 'Torta', icon: 'cake' },
+      { time: '10:00 Hrs.', label: 'Fiesta', icon: 'dance' },
+      { time: '10:50 Hrs.', label: 'Despedida\nde\nlos\nnovios', icon: 'couple' },
     ] as BItineraryItem[],
   },
 
@@ -233,12 +252,18 @@ export const designB = {
     title: 'Álbum de Fotos',
     photos: ['/images/15.jpg', '/images/4.jpg', '/images/9.jpg', '/images/11.jpg'],
     collage: [
-      { src: '/images/11.jpg', alt: 'Collage 1' },
-      { src: '/images/4.jpg', alt: 'Collage 2' },
-      { src: '/images/15.jpg', alt: 'Collage 3' },
+      { src: '/images/inicio.jpg', alt: 'Collage 1' },
+      { src: '/images/principal.jpg', alt: 'Collage 2' },
+      { src: '/images/11.jpg', alt: 'Collage 3' },
       { src: '/images/9.jpg', alt: 'Collage 4' },
+      { src: '/images/18.jpg', alt: 'Collage 5' },
+      { src: '/images/8.jpg', alt: 'Collage 6' },
+      { src: '/images/15.jpg', alt: 'Collage 5' },
+      { src: '/images/19.jpg', alt: 'Collage 6' },
+      { src: '/images/5.jpg', alt: 'Collage 5' },
+      { src: '/images/20.jpg', alt: 'Collage 6' },
       { src: '/images/17.jpg', alt: 'Collage 5' },
-      { src: '/images/5.jpg', alt: 'Collage 6' },
+      { src: '/images/21.jpg', alt: 'Collage 6' },
     ],
   },
 

@@ -259,3 +259,82 @@
 .animate-bTap {
   animation: bTap 1.4s ease-in-out infinite;
 }
+
+/* Latido del corazón que marca la fecha en el calendario */
+@keyframes bHeartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.12);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.14);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+/* Arranca cuando el corazón ya está dibujado a lápiz */
+.animate-bHeartbeat {
+  animation: bHeartbeat 1.5s ease-in-out 1.9s infinite;
+}
+
+/* ── Corazón "dibujado a lápiz" (calendario, diseño B) ────────────────────── */
+
+/* Trazo que se dibuja: dasharray completo + offset animado a 0.
+   Cada path usa `pathLength={1}` para que todo el trazo sea 1 unidad. */
+.b-sketch-line {
+  fill: none;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* Segunda pasada del boceto */
+.b-sketch-line--echo {
+  opacity: 0.5;
+}
+
+/* Rayas de sombreado */
+.b-sketch-line--shade {
+  opacity: 0.35;
+}
+
+@keyframes bSketchDraw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.b-sketch-in .b-sketch-line {
+  animation: bSketchDraw var(--draw-dur, 0.9s) cubic-bezier(0.5, 0, 0.4, 1)
+    var(--draw-delay, 0s) forwards;
+}
+
+/* Velo interior tipo lápiz de color: aparece al terminar el contorno */
+.b-sketch-veil {
+  opacity: 0;
+  transition: opacity 0.8s ease var(--veil-delay, 1.05s);
+}
+
+.b-sketch-in .b-sketch-veil {
+  opacity: 1;
+}
+
+/* El número aparece cuando el corazón ya está dibujado */
+.b-mark-number {
+  opacity: 0;
+  transition: opacity 0.55s ease 1.35s;
+}
+
+.b-sketch-in .b-mark-number {
+  opacity: 1;
+}

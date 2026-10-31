@@ -32,8 +32,7 @@ export function BHero() {
           <HeartsDoodle className="absolute left-1/2 top-8 w-20 -translate-x-1/2 opacity-90" />
         </div>
 
-        {/* Nombres y fecha en flujo, solapando el bajo del arco (la caja del
-            arco no recorta: es su contenedor, sin overflow ocultando). */}
+        {/* Nombres y fecha en flujo, solapando el bajo del arco */}
         <div className="pointer-events-none relative z-10 -mt-[150px] pb-3 sm:-mt-[195px]">
           <Reveal delay={140}>
             <p className="px-2 text-center font-bHand text-[44px] leading-[1.05] text-white drop-shadow-[0_2px_10px_rgba(20,30,40,0.55)] sm:text-[58px]">
@@ -48,8 +47,10 @@ export function BHero() {
         </div>
       </div>
 
-      {/* Barra de la canción */}
-      <SongStrip />
+      {/* 🟢 Barra de la canción con margen superior seguro para evitar que toque la foto */}
+      <div className="pt-10 sm:pt-10">
+        <SongStrip />
+      </div>
     </header>
   )
 }
@@ -61,9 +62,6 @@ function SongStrip() {
 
   const hintParts = song.hint.split('[]')
 
-  // El control del <audio> vive en <SongProvider>; aquí solo se consulta
-  // el estado (playing) y se alterna reproducción/pausa (toggle), así las
-  // pausas desde los videos de los grupos se reflejan en este botón.
   const press = () => {
     if (song.audioSrc) {
       toggle()
@@ -76,7 +74,7 @@ function SongStrip() {
   }
 
   return (
-    <div className="pb-6 pt-9 text-center">
+    <div className="pb-6 pt-3 text-center">
 
       <Reveal>
         <p className="mx-auto inline-block pb-2 font-bQuatt text-[20px] leading-snug text-bSage sm:text-[23px]">

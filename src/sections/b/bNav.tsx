@@ -10,6 +10,7 @@ const SEGMENTS: { href: string; label: string }[] = [
   { href: '#b-hero', label: 'Inicio' },
   { href: '#b-mensaje', label: 'Bienvenida' },
   { href: '#b-fecha', label: 'Fecha y cuenta regresiva' },
+  { href: '#b-calendario', label: 'Calendario' },
   { href: '#b-padres', label: 'Nuestros padres' },
   { href: '#b-padrinos', label: 'Nuestros padrinos' },
   { href: '#b-ubicacion', label: 'Ubicación' },

@@ -1,6 +1,7 @@
 import { BNav } from './sections/b/bNav'
 import { BHero, BMessage } from './sections/b/bHero'
 import { BDateCountdown } from './sections/b/bCountdown'
+import { BCalendar } from './sections/b/bCalendar'
 import { BFamily } from './sections/b/bFamily'
 import { BQuoteLocation } from './sections/b/bLocations'
 import { BItinerary } from './sections/b/bDressItinerary'
@@ -26,6 +27,7 @@ export default function DesignB() {
           <BHero />
           <BMessage />
           <BDateCountdown />
+          <BCalendar />
           {/*<BPases />*/}
           <BFamily />
           <BQuoteLocation />

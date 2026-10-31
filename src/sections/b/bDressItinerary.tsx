@@ -1,6 +1,6 @@
 import { designB } from '../../config/designB'
 import { WaveBand } from '../../components/decor/bWaves'
-import { BrideBadge, GroomBadge, IChurch, IRunway, IDance, IDinner, IGlasses, IBouquet, HeartFill } from '../../components/decor/bIcons'
+import { BrideBadge, GroomBadge, IChurch, IRunway, IDance, IDinner, IGlasses, IBouquet, HeartFill, ICake, ICouple } from '../../components/decor/bIcons'
 import { Reveal, ScriptTitle } from './bShared'
 
 /* ════════════════════════════════════════════════════════════════════════════
@@ -42,6 +42,8 @@ const ICONS = {
   dinner: IDinner,
   glasses: IGlasses,
   bouquet: IBouquet,
+  cake: ICake,
+  couple: ICouple,
 }
 
 export function BItinerary() {
