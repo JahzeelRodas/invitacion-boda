@@ -149,7 +149,7 @@ export const designB = {
       title: 'Recepción Social',
       time: '16:30 Hrs.',
       venueName: 'Salon de Eventos Golden Prime II',
-      addressLines: ['Av. Bolivia entre calles 4 y 5, N°20 ', 'Zona Santiago II'],
+      addressLines: ['Av. Bolivia entre calles 4 y 5, N°20 ', 'A una cuadra del colegio Bolivia'],
       mapsUrl: 'https://maps.app.goo.gl/KJc7Ghd4V89znymS6',
       image: '/images/18.jpg',
       imageAlt: 'Salón de eventos con pasillo rojo',
