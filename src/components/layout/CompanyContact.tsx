@@ -12,6 +12,8 @@ import { designB } from '../../config/designB'
    · Plegable con un clic: pulsar la línea de la marca (diseño B) o el
      titular (diseño A) pliega el resto del pie en una franja fina de ~25 px;
      otro clic lo despliega de nuevo (transición suave, estado de la sesión).
+     Al desplegar, la página baja sola hasta el final para que el pie entero
+     quede a la vista sin hacer scroll.
    · Se oculta por completo desde la configuración:
      wedding.ts → studio.visible · designB.ts → footer.visible (o contactHref '')
    ══════════════════════════════════════════════════════════════════════════ */
@@ -72,17 +74,41 @@ function CollapsePanel({
   )
 }
 
+/* Tras desplegar, la página baja sola hasta el final: el asa del pie suele
+   quedar pegada al borde inferior de la pantalla y, sin este ajuste, el
+   resto del pie se abriría por debajo del pliegue y habría que hacer
+   scroll para verlo. Se desliza cuando termina la animación de altura. */
+let expandScrollTimer: number | undefined
+
+function scrollFooterIntoViewAfterExpand(ms = 300) {
+  window.clearTimeout(expandScrollTimer)
+  expandScrollTimer = window.setTimeout(() => {
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
+  }, ms)
+}
+
+/** Cierra o abre el pie; si se abre, ajusta el scroll al final de la página. */
+function useFooterToggle() {
+  const [open, setOpen] = useState(true)
+  const toggle = () => {
+    const next = !open
+    setOpen(next)
+    if (next) scrollFooterIntoViewAfterExpand()
+  }
+  return [open, toggle] as const
+}
+
 /* ── Diseño A: la línea del titular es el asa; debajo se pliega lo demás ── */
 
 export function CompanyContactA() {
   const s = wedding.studio
-  const [open, setOpen] = useState(true)
+  const [open, toggle] = useFooterToggle()
   if (!s.visible || !s.contactHref) return null
   return (
     <div className="flex flex-col items-center">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={toggle}
         aria-expanded={open}
         aria-controls="company-contact-a"
         className="flex cursor-pointer items-center gap-1.5 py-2"
@@ -117,13 +143,13 @@ export function CompanyContactA() {
 
 export function CompanyContactB() {
   const f = designB.footer
-  const [open, setOpen] = useState(true)
+  const [open, toggle] = useFooterToggle()
   if (!f.visible || !f.contactHref) return null
   return (
     <footer className="border-t border-bSage/25 bg-bPaper text-center">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={toggle}
         aria-expanded={open}
         aria-controls="company-contact-b"
         className="flex w-full cursor-pointer items-center justify-center gap-2 px-6 pt-2 pb-1.5"
