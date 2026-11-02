@@ -270,9 +270,11 @@ export const designB = {
   /* ── 17 · PIE ─────────────────────────────────────────────────────────── */
   footer: {
     headline: '¿Te gustaría una invitación para tu evento?',
+    /** Tipos de evento que hacemos (línea diminuta bajo el titular). */
+    eventsLine: 'Bodas · XV años · Cumpleaños · Todo evento',
     contactLabel: 'Contáctanos',
-    contactHref: 'https://wa.link/gvhorg',
-    brandName: 'Rovelbots',
+    contactHref: 'https://wa.link/',
+    brandName: '',
     brandLine: 'Invitaciones digitales',
   },
 }

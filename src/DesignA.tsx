@@ -15,6 +15,7 @@ import GuestbookSection from './sections/GuestbookSection'
 //import GiftsSection from './sections/GiftsSection'
 import RSVPModal from './components/rsvp/RSVPModal'
 import { GoldenOrnament } from './components/decor/ornaments'
+import { CompanyContactA } from './components/layout/CompanyContact'
 
 /* ════════════════════════════════════════════════════════════════════════════
    DISEÑO A — "MINIMALISMO AZUL PROFUNDO"; portada con sello y flujo completo.
@@ -92,6 +93,8 @@ function Shell() {
               {wedding.gifts.footnote}
             </p>
             <GoldenOrnament className="mt-6 block w-12" />
+            {/* contacto sutil del estudio (ya sea para boda, cumpleaños, etc.) */}
+            <CompanyContactA />
             {/*wedding.isDemoContent ? (
               <p className="mt-4 text-[9px] font-medium uppercase tracking-[0.3em] text-navy/50">
                 Contenido de ejemplo — personaliza la invitación en src/config/wedding.ts

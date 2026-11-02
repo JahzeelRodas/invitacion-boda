@@ -20,6 +20,7 @@
    · Libro de visitas (mensajes semilla)    → guestbook
    · Caja de regalos (cuentas / QR)         → gifts
    · Canción de fondo                       → music
+   · Pie de página (contacto del estudio)   → studio
    ────────────────────────────────────────────────────────────────────────── */
 
 export interface GalleryImage {
@@ -255,6 +256,23 @@ export const wedding = {
      * Nota de cierre de la invitación (pie de página).
      */
     footnote: 'Su presencia será el mejor regalo que podríamos recibir.',
+  },
+
+  /* ── PIE DE PÁGINA · CONTACTO DEL ESTUDIO ────────────────────────────── */
+  /**
+   * Remate muy discreto al final de la invitación: invita a los invitados
+   * del evento a pedir su propia invitación digital (boda, XV años,
+   * cumpleaños, etc.). Se muestra como un botón fantasma muy pequeño.
+   * Deja `contactHref: ''` para ocultarlo por completo.
+   */
+  studio: {
+    name: 'Rovelbots',
+    tagline: 'Invitaciones digitales',
+    headline: '¿Te gustaría una invitación para tu evento?',
+    /** Tipos de evento que hacemos (línea diminuta bajo el titular). */
+    eventsLine: 'Bodas · XV años · Cumpleaños · Todo evento',
+    contactLabel: 'Contáctanos',
+    contactHref: 'https://wa.link/gvhorg',
   },
 
   /* ── MÚSICA AMBIENTAL ────────────────────────────────────────────────── */

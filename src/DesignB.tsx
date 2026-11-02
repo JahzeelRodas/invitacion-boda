@@ -8,6 +8,7 @@ import { BItinerary } from './sections/b/bDressItinerary'
 import { BMusicGroups } from './sections/b/bMusic'
 import { BRsvp, BAlbum } from './sections/b/bRsvpAlbum'
 import { SongProvider } from './components/audio/SongProvider'
+import { CompanyContactB } from './components/layout/CompanyContact'
 
 /* ════════════════════════════════════════════════════════════════════════════
    DISEÑO B — "MODELO ELEGANTE 2026" (recreación del modelo de referencia).
@@ -39,6 +40,8 @@ export default function DesignB() {
           {/*<BSharePhotos />*/}
           <BRsvp />
           <BAlbum />
+          {/* pie de página muy sutil: contacto del estudio */}
+          <CompanyContactB />
           {/*<BFooterBar />*/}
         </div>
       </div>
