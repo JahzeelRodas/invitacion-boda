@@ -32,15 +32,17 @@ export function CompanyContactA() {
   if (!s.contactHref) return null
   return (
     <div className="flex flex-col items-center">
-      <p className="mt-5 text-[9px] font-medium uppercase tracking-[0.3em] text-navy/40">
+      <p className="mt-3.5 text-[9px] font-medium uppercase leading-[1.25] tracking-[0.28em] text-navy/40">
         {s.headline}
       </p>
-      <p className="mt-1.5 text-[10px] uppercase tracking-[0.22em] text-navy/35">{s.eventsLine}</p>
+      <p className="mt-1 text-[9.5px] uppercase leading-[1.25] tracking-[0.2em] text-navy/35">
+        {s.eventsLine}
+      </p>
       <a
         href={s.contactHref}
         target="_blank"
         rel="noreferrer"
-        className="mt-3.5 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-gold/35 px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-navy/55 transition-colors duration-300 hover:border-gold/75 hover:text-navy"
+        className="mt-2 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-gold/35 px-3.5 py-1 text-[10px] font-medium uppercase leading-[1.2] tracking-[0.2em] text-navy/55 transition-colors duration-300 hover:border-gold/75 hover:text-navy"
       >
         <WhatsAppIcon className="h-3 w-3" />
         {s.contactLabel}
@@ -55,19 +57,21 @@ export function CompanyContactB() {
   const f = designB.footer
   if (!f.contactHref) return null
   return (
-    <footer className="border-t border-bSage/25 bg-bPaper px-6 pb-10 pt-7 text-center">
-      <p className="text-[9px] font-medium uppercase tracking-[0.28em] text-bBody/55">
+    <footer className="border-t border-bSage/25 bg-bPaper px-6 pb-3 pt-2.5 text-center">
+      <p className="text-[9px] font-medium uppercase leading-[1.25] tracking-[0.26em] text-bBody/55">
         {f.brandName} · {f.brandLine}
       </p>
-      <p className="mt-2 font-bCardo text-[16px] text-bInk/75">{f.headline}</p>
-      <p className="mt-0.5 text-[10px] uppercase tracking-[0.2em] text-bBody/55">{f.eventsLine}</p>
+      <p className="mt-1 font-bCardo text-[15px] leading-[1.2] text-bInk/75">{f.headline}</p>
+      <p className="mt-0.5 text-[9.5px] uppercase leading-[1.25] tracking-[0.2em] text-bBody/55">
+        {f.eventsLine}
+      </p>
       <a
         href={f.contactHref}
         target="_blank"
         rel="noreferrer"
-        className="mt-3.5 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-bSage/40 px-4 py-1.5 font-bSans text-[11px] font-semibold uppercase tracking-[0.16em] text-bInk/70 transition-colors duration-300 hover:border-bSage hover:bg-bSage/10 hover:text-bNavy"
+        className="mt-1.5 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-bSage/40 px-3.5 py-1 font-bSans text-[10.5px] font-semibold uppercase tracking-[0.15em] text-bInk/70 transition-colors duration-300 hover:border-bSage hover:bg-bSage/10 hover:text-bNavy"
       >
-        <WhatsAppIcon className="h-3.5 w-3.5" />
+        <WhatsAppIcon className="h-3 w-3" />
         {f.contactLabel}
       </a>
     </footer>
