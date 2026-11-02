@@ -1,3 +1,4 @@
+import { useState, type ReactNode } from 'react'
 import { wedding } from '../../config/wedding'
 import { designB } from '../../config/designB'
 
@@ -8,15 +9,14 @@ import { designB } from '../../config/designB'
    a pedir su propia invitación digital (boda, XV años, cumpleaños, etc.)
    escribiéndonos por WhatsApp.
 
-   · Diseño A («minimalismo azul profundo») → CompanyContactA (dentro del pie)
-   · Diseño B («modelo elegante 2026»)      → CompanyContactB (banda final)
-
-   Textos y enlace se editan SOLO en la configuración:
-   · wedding.ts → studio
-   · designB.ts → footer
+   · Plegable con un clic: pulsar la línea de la marca (diseño B) o el
+     titular (diseño A) pliega el resto del pie en una franja fina de ~25 px;
+     otro clic lo despliega de nuevo (transición suave, estado de la sesión).
+   · Se oculta por completo desde la configuración:
+     wedding.ts → studio.visible · designB.ts → footer.visible (o contactHref '')
    ══════════════════════════════════════════════════════════════════════════ */
 
-/** Glifo de WhatsApp en línea (12–14 px; hereda el color del texto). */
+/** Glifo de WhatsApp en línea (12 px; hereda el color del texto). */
 export function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
@@ -25,55 +25,132 @@ export function WhatsAppIcon({ className }: { className?: string }) {
   )
 }
 
-/* ── Diseño A: bloque discreto que se encaja al final del pie existente ── */
-
-export function CompanyContactA() {
-  const s = wedding.studio
-  if (!s.contactHref) return null
+/** Chevecita tenue que anuncia el plegado (apunta abajo plegado, arriba abierto). */
+function Chevron({ open, className }: { open: boolean; className?: string }) {
   return (
-    <div className="flex flex-col items-center">
-      <p className="mt-3.5 text-[9px] font-medium uppercase leading-[1.25] tracking-[0.28em] text-navy/40">
-        {s.headline}
-      </p>
-      <p className="mt-1 text-[9.5px] uppercase leading-[1.25] tracking-[0.2em] text-navy/35">
-        {s.eventsLine}
-      </p>
-      <a
-        href={s.contactHref}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-2 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-gold/35 px-3.5 py-1 text-[10px] font-medium uppercase leading-[1.2] tracking-[0.2em] text-navy/55 transition-colors duration-300 hover:border-gold/75 hover:text-navy"
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={`transition-transform duration-300 ${open ? 'rotate-180' : ''} ${className ?? ''}`}
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  )
+}
+
+/** Panel plegable con animación de altura (0fr → 1fr); sale también del foco. */
+function CollapsePanel({
+  open,
+  id,
+  children,
+}: {
+  open: boolean
+  id: string
+  children: ReactNode
+}) {
+  return (
+    <div
+      id={id}
+      style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
+      className="grid transition-[grid-template-rows] duration-300 ease-out"
+    >
+      <div
+        className="min-h-0 overflow-hidden"
+        style={{
+          visibility: open ? 'visible' : 'hidden',
+          transition: `visibility 0s linear ${open ? '0s' : '300ms'}`,
+        }}
       >
-        <WhatsAppIcon className="h-3 w-3" />
-        {s.contactLabel}
-      </a>
+        {children}
+      </div>
     </div>
   )
 }
 
-/* ── Diseño B: banda fina y tenue tras el collage, sin rojo ni sello ── */
+/* ── Diseño A: la línea del titular es el asa; debajo se pliega lo demás ── */
+
+export function CompanyContactA() {
+  const s = wedding.studio
+  const [open, setOpen] = useState(true)
+  if (!s.visible || !s.contactHref) return null
+  return (
+    <div className="flex flex-col items-center">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-controls="company-contact-a"
+        className="flex cursor-pointer items-center gap-1.5 py-2"
+      >
+        <span className="text-[9px] font-medium uppercase leading-none tracking-[0.28em] text-navy/40">
+          {s.headline}
+        </span>
+        <Chevron open={open} className="h-2.5 w-2.5 text-navy/35" />
+      </button>
+
+      <CollapsePanel open={open} id="company-contact-a">
+        <div className="flex flex-col items-center px-6 pb-3">
+          <p className="text-[9.5px] uppercase leading-[1.25] tracking-[0.2em] text-navy/35">
+            {s.eventsLine}
+          </p>
+          <a
+            href={s.contactHref}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-1.5 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-gold/35 px-3.5 py-1 text-[10px] font-medium uppercase leading-[1.2] tracking-[0.2em] text-navy/55 transition-colors duration-300 hover:border-gold/75 hover:text-navy"
+          >
+            <WhatsAppIcon className="h-3 w-3" />
+            {s.contactLabel}
+          </a>
+        </div>
+      </CollapsePanel>
+    </div>
+  )
+}
+
+/* ── Diseño B: la línea de marca es el asa; debajo se pliega lo demás ── */
 
 export function CompanyContactB() {
   const f = designB.footer
-  if (!f.contactHref) return null
+  const [open, setOpen] = useState(true)
+  if (!f.visible || !f.contactHref) return null
   return (
-    <footer className="border-t border-bSage/25 bg-bPaper px-6 pb-3 pt-2.5 text-center">
-      <p className="text-[9px] font-medium uppercase leading-[1.25] tracking-[0.26em] text-bBody/55">
-        {f.brandName} · {f.brandLine}
-      </p>
-      <p className="mt-1 font-bCardo text-[15px] leading-[1.2] text-bInk/75">{f.headline}</p>
-      <p className="mt-0.5 text-[9.5px] uppercase leading-[1.25] tracking-[0.2em] text-bBody/55">
-        {f.eventsLine}
-      </p>
-      <a
-        href={f.contactHref}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-1.5 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-bSage/40 px-3.5 py-1 font-bSans text-[10.5px] font-semibold uppercase tracking-[0.15em] text-bInk/70 transition-colors duration-300 hover:border-bSage hover:bg-bSage/10 hover:text-bNavy"
+    <footer className="border-t border-bSage/25 bg-bPaper text-center">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        aria-controls="company-contact-b"
+        className="flex w-full cursor-pointer items-center justify-center gap-2 px-6 pt-2 pb-1.5"
       >
-        <WhatsAppIcon className="h-3 w-3" />
-        {f.contactLabel}
-      </a>
+        <span className="text-[9px] font-medium uppercase leading-none tracking-[0.26em] text-bBody/55">
+          {f.brandName} · {f.brandLine}
+        </span>
+        <Chevron open={open} className="h-2.5 w-2.5 text-bBody/50" />
+      </button>
+
+      <CollapsePanel open={open} id="company-contact-b">
+        <div className="px-6 pb-3">
+          <p className="font-bCardo text-[15px] leading-[1.2] text-bInk/75">{f.headline}</p>
+          <p className="mt-0.5 text-[9.5px] uppercase leading-[1.25] tracking-[0.2em] text-bBody/55">
+            {f.eventsLine}
+          </p>
+          <a
+            href={f.contactHref}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-1.5 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-bSage/40 px-3.5 py-1 font-bSans text-[10.5px] font-semibold uppercase tracking-[0.15em] text-bInk/70 transition-colors duration-300 hover:border-bSage hover:bg-bSage/10 hover:text-bNavy"
+          >
+            <WhatsAppIcon className="h-3 w-3" />
+            {f.contactLabel}
+          </a>
+        </div>
+      </CollapsePanel>
     </footer>
   )
 }

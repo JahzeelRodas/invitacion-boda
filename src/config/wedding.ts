@@ -266,6 +266,8 @@ export const wedding = {
    * Deja `contactHref: ''` para ocultarlo por completo.
    */
   studio: {
+    /** Muestra u oculta el pie de contacto del estudio. `false` = oculto. */
+    visible: true,
     name: 'Rovelbots',
     tagline: 'Invitaciones digitales',
     headline: '¿Te gustaría una invitación para tu evento?',

@@ -269,6 +269,8 @@ export const designB = {
 
   /* ── 17 · PIE ─────────────────────────────────────────────────────────── */
   footer: {
+    /** Muestra u oculta el pie de contacto del estudio. `false` = oculto. */
+    visible: true,
     headline: '¿Te gustaría una invitación para tu evento?',
     /** Tipos de evento que hacemos (línea diminuta bajo el titular). */
     eventsLine: 'Bodas · XV años · Cumpleaños · Todo evento',
