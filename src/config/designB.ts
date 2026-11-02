@@ -275,7 +275,7 @@ export const designB = {
     /** Tipos de evento que hacemos (línea diminuta bajo el titular). */
     eventsLine: 'Bodas · XV años · Cumpleaños · Todo evento',
     contactLabel: 'Contáctanos',
-    contactHref: 'https://wa.link/',
+    contactHref: 'https://wa.me/59169907419?text=Informaci%C3%B3n%20sobre%20las%20invitaciones%20digitales%20por%20favor',
     brandName: '',
     brandLine: 'Invitaciones digitales',
   },

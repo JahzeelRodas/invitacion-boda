@@ -143,6 +143,7 @@ export function CompanyContactA() {
 
 export function CompanyContactB() {
   const f = designB.footer
+  const brandText = [f.brandName, f.brandLine].filter(Boolean).join(' · ')
   const [open, toggle] = useFooterToggle()
   if (!f.visible || !f.contactHref) return null
   return (
@@ -154,9 +155,11 @@ export function CompanyContactB() {
         aria-controls="company-contact-b"
         className="flex w-full cursor-pointer items-center justify-center gap-2 px-6 pt-2 pb-1.5"
       >
-        <span className="text-[9px] font-medium uppercase leading-none tracking-[0.26em] text-bBody/55">
-          {f.brandName} · {f.brandLine}
-        </span>
+        {brandText ? (
+          <span className="text-[9px] font-medium uppercase leading-none tracking-[0.26em] text-bBody/55">
+            {brandText}
+          </span>
+        ) : null}
         <Chevron open={open} className="h-2.5 w-2.5 text-bBody/50" />
       </button>
 
